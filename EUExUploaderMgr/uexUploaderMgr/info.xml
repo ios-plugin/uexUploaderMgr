@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<uexplugins>
+    <plugin uexName="uexUploaderMgr" version="3.0.5" build = "5">
+        <info>5:统一uexUploaderMgr插件Android和iOS的请求超时时间</info>
+        <build>4:修复uexUploaderMgr插件设置请求头不成功的问题</build>
+        <build>3:uexUploaderMgr插件新增setHeaders接口</build>
+        <build>2:修复uexUploaderMgr.uploadFile接口不传"可选"参数会奔溃的bug</build>
+        <build>1:修复上传过程中关闭window崩溃问题</build>
+        <build>0:上传功能插件</build>
+	</plugin>
+</uexplugins>
