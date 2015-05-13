@@ -71,6 +71,12 @@
 	[aRequest setDelegate:self];
 	[aRequest setUploadProgressDelegate:self];
     [aRequest setTimeOutSeconds:5*60*1000];
+    //
+    if ([self.targetAddress rangeOfString:@"https"].location != NSNotFound) {
+        [aRequest setAuthenticationScheme:@"https"];
+        [aRequest setValidatesSecureCertificate:NO];
+    }
+    
     if (aHeaderDict&&[aHeaderDict isKindOfClass:[NSMutableDictionary class]]) {
         [aRequest setRequestHeaders:aHeaderDict];
     }
@@ -91,6 +97,7 @@
 	}
 }
 -(void)request:(ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders{
+    
 }
 
 -(void)request:(ASIHTTPRequest *)request didSendBytes:(long long)bytes{
@@ -121,6 +128,7 @@
 
 -(void)requestFailed:(ASIHTTPRequest *)request{
 	//	[BUtility writeLog:@"fail"];
+    
     if (euexObj) {
         [euexObj uexOnUpLoadWithOpId:[self.opid intValue] fileSize:0 percent:0 serverPath:@"" status:UEX_UPLOAD_FAIL];
         [euexObj.formDict removeObjectForKey:self.opid];
