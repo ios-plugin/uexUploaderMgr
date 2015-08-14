@@ -12,6 +12,10 @@
 #import "EUExBaseDefine.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "EUExUploaderMgr.h"
+#import <CommonCrypto/CommonCrypto.h>
+#import "BUtility.h"
+#import "EBrowserView.h"
+#import "WWidget.h"
 @implementation EUExFormFile
 @synthesize targetAddress,opid;
 @synthesize filePath,isUploading;
@@ -63,6 +67,31 @@
 	long sum = [fileSize longLongValue];
 	return sum;
 }
+
+/**
+ *  设置请求头的验证
+ *
+ *  @param inName nil
+ */
+-(void)requestIsVerify{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
+    WWidget *curWgt = euexObj.meBrwView.mwWgt;
+    NSString *time= [self getCurrentTS];
+    NSString *appkey = nil;
+    if (curWgt.appKey) {
+        appkey = [NSString stringWithFormat:@"%@",curWgt.appKey];
+    }else{
+        appkey = [NSString stringWithFormat:@"%@",curWgt.widgetOneId];
+    }
+    NSString *str = [NSString stringWithFormat:@"%@:%@:%@",curWgt.appId,appkey,time];
+    str = [self md5:str];
+    str = [NSString stringWithFormat:@"md5=%@;ts=%@;",str,time];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:aRequest.requestHeaders];
+    [dict setObject:str forKey:@"appverify"];
+    [aRequest setRequestHeaders:dict];
+    [pool release];
+}
+
 
 -(void)uploadingWithName:(NSString *)inName{
 	NSString *ulPath = self.filePath; 
@@ -133,6 +162,36 @@
         [euexObj uexOnUpLoadWithOpId:[self.opid intValue] fileSize:0 percent:0 serverPath:@"" status:UEX_UPLOAD_FAIL];
         [euexObj.formDict removeObjectForKey:self.opid];
     }
+}
+
+#pragma mark -
+#pragma mark - md5
+
+- (NSString *)md5:(NSString *)appKeyAndAppId {
+    const char *cStr = [appKeyAndAppId UTF8String];
+    unsigned char result[16];
+    CC_MD5(cStr, strlen(cStr), result); // This is the md5 call
+    return [NSString stringWithFormat:
+            @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+            result[0], result[1], result[2], result[3],
+            result[4], result[5], result[6], result[7],
+            result[8], result[9], result[10], result[11],
+            result[12], result[13], result[14], result[15]
+            ];
+}
+
+#pragma mark -
+#pragma mark - 获得当前时间戳
+
+-(NSString *)getCurrentTS{
+    unsigned long long time = [[NSDate  date] timeIntervalSince1970] * 1000;
+    
+    NSString * timeSp = [NSString stringWithFormat:@"%lld",time];
+    return timeSp;
+    //    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    //    NSTimeInterval a = [dat timeIntervalSince1970]*1000;
+    //    NSString *timeString = [NSString stringWithFormat:@"%d",a];//转为字符型
+    //    return timeString;
 }
 
 -(void)dealloc{
