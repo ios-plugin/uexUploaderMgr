@@ -18,6 +18,7 @@
 		3CDA1CA218C19A6300AA00C7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDA1CA118C19A6300AA00C7 /* AudioToolbox.framework */; };
 		3CDA1CBB18C19A8700AA00C7 /* EUExUploaderMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA1CA918C19A8700AA00C7 /* EUExUploaderMgr.m */; };
 		3CDA1CBC18C19A8700AA00C7 /* EUExFormFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA1CBA18C19A8700AA00C7 /* EUExFormFile.m */; };
+		42FC65041B830FA300888337 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FC65031B830FA300888337 /* ImageIO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,6 +65,10 @@
 		3CDA1CB818C19A8700AA00C7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3CDA1CB918C19A8700AA00C7 /* EUExFormFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExFormFile.h; sourceTree = "<group>"; };
 		3CDA1CBA18C19A8700AA00C7 /* EUExFormFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EUExFormFile.m; sourceTree = "<group>"; };
+		42FC64FC1B830B9D00888337 /* BUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUtility.h; sourceTree = "<group>"; };
+		42FC64FD1B830B9D00888337 /* EBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBrowserView.h; sourceTree = "<group>"; };
+		42FC64FE1B830B9D00888337 /* WWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWidget.h; sourceTree = "<group>"; };
+		42FC65031B830FA300888337 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		DE201CFB1AAFEE0E001C46A5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		DE201CFC1AAFEE0E001C46A5 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		DE201CFD1AAFEE0E001C46A5 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
@@ -78,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42FC65041B830FA300888337 /* ImageIO.framework in Frameworks */,
 				3CDA1CA218C19A6300AA00C7 /* AudioToolbox.framework in Frameworks */,
 				3CDA1CA018C19A5F00AA00C7 /* MapKit.framework in Frameworks */,
 				3CDA1C9E18C19A5900AA00C7 /* CoreTelephony.framework in Frameworks */,
@@ -113,6 +119,7 @@
 		3CDA1C5218C199BD00AA00C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42FC65031B830FA300888337 /* ImageIO.framework */,
 				3CDA1CA118C19A6300AA00C7 /* AudioToolbox.framework */,
 				3CDA1C9F18C19A5F00AA00C7 /* MapKit.framework */,
 				3CDA1C9D18C19A5900AA00C7 /* CoreTelephony.framework */,
@@ -141,6 +148,9 @@
 		3CDA1CA318C19A8700AA00C7 /* engineHeader */ = {
 			isa = PBXGroup;
 			children = (
+				42FC64FC1B830B9D00888337 /* BUtility.h */,
+				42FC64FD1B830B9D00888337 /* EBrowserView.h */,
+				42FC64FE1B830B9D00888337 /* WWidget.h */,
 				3CDA1CA418C19A8700AA00C7 /* EUExBase.h */,
 				3CDA1CA518C19A8700AA00C7 /* EUExBaseDefine.h */,
 				3CDA1CA618C19A8700AA00C7 /* EUtility.h */,
@@ -341,6 +351,7 @@
 				DSTROOT = /tmp/uexUploaderMgr.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EUExUploaderMgr/EUExUploaderMgr-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../",
@@ -360,6 +371,7 @@
 				DSTROOT = /tmp/uexUploaderMgr.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EUExUploaderMgr/EUExUploaderMgr-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../",
