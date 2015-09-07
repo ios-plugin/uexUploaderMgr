@@ -11,11 +11,15 @@
 #import "EUtility.h"
 #import "EUExBaseDefine.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "EUExUploaderMgr.h"
 #import <CommonCrypto/CommonCrypto.h>
-#import "BUtility.h"
-#import "EBrowserView.h"
+#import "EUExUploaderMgr.h"
 #import "WWidget.h"
+#import "EBrowserView.h"
+#import "BUtility.h"
+#import "WWidgetMgr.h"
+#import "ACEBaseViewController.h"
+#import "EBrowserController.h"
+
 @implementation EUExFormFile
 @synthesize targetAddress,opid;
 @synthesize filePath,isUploading;
@@ -73,30 +77,41 @@
  *
  *  @param inName nil
  */
--(void)requestIsVerify{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
+-(NSString*)requestIsVerify{
     WWidget *curWgt = euexObj.meBrwView.mwWgt;
     NSString *time= [self getCurrentTS];
-    NSString *appkey = nil;
-    if (curWgt.appKey) {
-        appkey = [NSString stringWithFormat:@"%@",curWgt.appKey];
-    }else{
-        appkey = [NSString stringWithFormat:@"%@",curWgt.widgetOneId];
+    NSString *appKey = @"";
+    NSString *appId = @"";
+    
+    NSString *pluginStr = @"widget/plugin";
+    if ([curWgt.indexUrl rangeOfString:pluginStr].length == [pluginStr length]) {
+        WWidgetMgr *wgtMgr = euexObj.meBrwView.meBrwCtrler.mwWgtMgr;
+        WWidget *mainWgt = [wgtMgr mainWidget];
+        
+        appId = mainWgt.appId;
+        appKey = mainWgt.widgetOneId;
+        
+        
+    } else {
+        if (curWgt.appKey) {
+            appKey = [NSString stringWithFormat:@"%@",curWgt.appKey];
+        }else{
+            appKey = [NSString stringWithFormat:@"%@",curWgt.widgetOneId];
+        }
+        appId = curWgt.appId;
     }
-    NSString *str = [NSString stringWithFormat:@"%@:%@:%@",curWgt.appId,appkey,time];
+    NSString *str = [NSString stringWithFormat:@"%@:%@:%@",appId,appKey,time];
     str = [self md5:str];
     str = [NSString stringWithFormat:@"md5=%@;ts=%@;",str,time];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:aRequest.requestHeaders];
-    [dict setObject:str forKey:@"appverify"];
-    [aRequest setRequestHeaders:dict];
-    [pool release];
+    return str;
 }
 
-
 -(void)uploadingWithName:(NSString *)inName{
+    NSString *headerStr = nil;
 	NSString *ulPath = self.filePath; 
 	NSURL *url = [NSURL URLWithString:self.targetAddress];
 	self.aRequest = [ASIFormDataRequest requestWithURL:url];
+    //[self requestIsVerify];
 	[aRequest setDelegate:self];
 	[aRequest setUploadProgressDelegate:self];
     [aRequest setTimeOutSeconds:5*60*1000];
@@ -107,7 +122,14 @@
     }
     
     if (aHeaderDict&&[aHeaderDict isKindOfClass:[NSMutableDictionary class]]) {
+        headerStr = [self requestIsVerify];
+        [aHeaderDict setObject:headerStr forKeyedSubscript:@"appverify"];
         [aRequest setRequestHeaders:aHeaderDict];
+    }else{
+        headerStr = [self requestIsVerify];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:aRequest.requestHeaders];
+        [dict setObject:headerStr forKeyedSubscript:@"appverify"];
+        [aRequest setRequestHeaders:dict];
     }
     aRequest.defaultResponseEncoding = NSUTF8StringEncoding;
 	if ([ulPath hasPrefix:@"assets-library"]) {
@@ -141,6 +163,7 @@
     }
 	
 }
+
 
 -(void)requestFinished:(ASIHTTPRequest *)request{
 	NSFileManager *fmanager = [NSFileManager defaultManager];

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3CDA1C5418C199BD00AA00C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDA1C5318C199BD00AA00C7 /* Foundation.framework */; };
-		3CDA1C9418C199DF00AA00C7 /* libAppCanEngine_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDA1C9318C199DF00AA00C7 /* libAppCanEngine_IOS.a */; };
 		3CDA1C9618C19A4500AA00C7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDA1C9518C19A4500AA00C7 /* libsqlite3.dylib */; };
 		3CDA1C9818C19A4A00AA00C7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDA1C9718C19A4A00AA00C7 /* libz.dylib */; };
 		3CDA1C9A18C19A4F00AA00C7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDA1C9918C19A4F00AA00C7 /* SystemConfiguration.framework */; };
@@ -18,6 +17,7 @@
 		3CDA1CA218C19A6300AA00C7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDA1CA118C19A6300AA00C7 /* AudioToolbox.framework */; };
 		3CDA1CBB18C19A8700AA00C7 /* EUExUploaderMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA1CA918C19A8700AA00C7 /* EUExUploaderMgr.m */; };
 		3CDA1CBC18C19A8700AA00C7 /* EUExFormFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA1CBA18C19A8700AA00C7 /* EUExFormFile.m */; };
+		76DE24331B9D87FE00519399 /* libAppCanEngine_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76DE24321B9D87FE00519399 /* libAppCanEngine_IOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,7 +35,6 @@
 /* Begin PBXFileReference section */
 		3CDA1C5018C199BD00AA00C7 /* uexUploaderMgr.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = uexUploaderMgr.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CDA1C5318C199BD00AA00C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		3CDA1C9318C199DF00AA00C7 /* libAppCanEngine_IOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAppCanEngine_IOS.a; path = ../libAppCanEngine_IOS.a; sourceTree = "<group>"; };
 		3CDA1C9518C19A4500AA00C7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3CDA1C9718C19A4A00AA00C7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3CDA1C9918C19A4F00AA00C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -64,6 +63,13 @@
 		3CDA1CB818C19A8700AA00C7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3CDA1CB918C19A8700AA00C7 /* EUExFormFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExFormFile.h; sourceTree = "<group>"; };
 		3CDA1CBA18C19A8700AA00C7 /* EUExFormFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EUExFormFile.m; sourceTree = "<group>"; };
+		76DE242C1B9D877800519399 /* WWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWidget.h; sourceTree = "<group>"; };
+		76DE242D1B9D878E00519399 /* EBrowserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBrowserView.h; sourceTree = "<group>"; };
+		76DE242E1B9D879700519399 /* BUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BUtility.h; sourceTree = "<group>"; };
+		76DE242F1B9D87A400519399 /* WWidgetMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWidgetMgr.h; sourceTree = "<group>"; };
+		76DE24301B9D87AD00519399 /* ACEBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACEBaseViewController.h; sourceTree = "<group>"; };
+		76DE24311B9D87B600519399 /* EBrowserController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBrowserController.h; sourceTree = "<group>"; };
+		76DE24321B9D87FE00519399 /* libAppCanEngine_IOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppCanEngine_IOS.a; sourceTree = "<group>"; };
 		DE201CFB1AAFEE0E001C46A5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		DE201CFC1AAFEE0E001C46A5 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		DE201CFD1AAFEE0E001C46A5 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
@@ -79,13 +85,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CDA1CA218C19A6300AA00C7 /* AudioToolbox.framework in Frameworks */,
+				76DE24331B9D87FE00519399 /* libAppCanEngine_IOS.a in Frameworks */,
 				3CDA1CA018C19A5F00AA00C7 /* MapKit.framework in Frameworks */,
 				3CDA1C9E18C19A5900AA00C7 /* CoreTelephony.framework in Frameworks */,
 				3CDA1C9C18C19A5400AA00C7 /* MobileCoreServices.framework in Frameworks */,
 				3CDA1C9A18C19A4F00AA00C7 /* SystemConfiguration.framework in Frameworks */,
 				3CDA1C9818C19A4A00AA00C7 /* libz.dylib in Frameworks */,
 				3CDA1C9618C19A4500AA00C7 /* libsqlite3.dylib in Frameworks */,
-				3CDA1C9418C199DF00AA00C7 /* libAppCanEngine_IOS.a in Frameworks */,
 				3CDA1C5418C199BD00AA00C7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +102,7 @@
 		3CDA1C4718C199BC00AA00C7 = {
 			isa = PBXGroup;
 			children = (
+				76DE24321B9D87FE00519399 /* libAppCanEngine_IOS.a */,
 				3CDA1C5518C199BD00AA00C7 /* uexUploaderMgr */,
 				3CDA1C5218C199BD00AA00C7 /* Frameworks */,
 				3CDA1C5118C199BD00AA00C7 /* Products */,
@@ -120,7 +127,6 @@
 				3CDA1C9918C19A4F00AA00C7 /* SystemConfiguration.framework */,
 				3CDA1C9718C19A4A00AA00C7 /* libz.dylib */,
 				3CDA1C9518C19A4500AA00C7 /* libsqlite3.dylib */,
-				3CDA1C9318C199DF00AA00C7 /* libAppCanEngine_IOS.a */,
 				3CDA1C5318C199BD00AA00C7 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -141,6 +147,12 @@
 		3CDA1CA318C19A8700AA00C7 /* engineHeader */ = {
 			isa = PBXGroup;
 			children = (
+				76DE24311B9D87B600519399 /* EBrowserController.h */,
+				76DE24301B9D87AD00519399 /* ACEBaseViewController.h */,
+				76DE242F1B9D87A400519399 /* WWidgetMgr.h */,
+				76DE242E1B9D879700519399 /* BUtility.h */,
+				76DE242D1B9D878E00519399 /* EBrowserView.h */,
+				76DE242C1B9D877800519399 /* WWidget.h */,
 				3CDA1CA418C19A8700AA00C7 /* EUExBase.h */,
 				3CDA1CA518C19A8700AA00C7 /* EUExBaseDefine.h */,
 				3CDA1CA618C19A8700AA00C7 /* EUtility.h */,
@@ -344,6 +356,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -363,6 +376,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../",
+					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

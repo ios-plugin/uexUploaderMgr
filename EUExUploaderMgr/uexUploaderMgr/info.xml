@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <uexplugins>
-    <plugin uexName="uexUploaderMgr" version="3.0.7" build = "7">
-    		<info>7:修改请求的头的验证</info>
+    <plugin uexName="uexUploaderMgr" version="3.0.12" build = "12">
+    	 <info>12.修改clean方法</info>
+    	 <build>11.验证的请求头的中的appid与key不匹配</build>
+    	  <build>10.判断当前的验证的请求头的属于的应用</build>
+    		<build>9:当调用setHeader接口时，设置的请求头会为空</build>
+    	  <build>8:修改验证appkey的方法</build>
+    	  <build>7:添加请求头验证方法</build>
         <build>6:支持https</build>
         <build>5:统一uexUploaderMgr插件Android和iOS的请求超时时间</build>
         <build>4:修复uexUploaderMgr插件设置请求头不成功的问题</build>
