@@ -48,9 +48,6 @@
 		03442C7018B2326A00CEC18D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		03442C7118B2326A00CEC18D /* EUExFormFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExFormFile.h; sourceTree = "<group>"; };
 		03442C7218B2326A00CEC18D /* EUExFormFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EUExFormFile.m; sourceTree = "<group>"; };
-		76DC01AD1B7E138D007C5E5F /* BUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUtility.h; path = "../../../../../Desktop/Desktop/项目/uexUploaderMgr/uexUploaderMgr-master/EUExUploaderMgr/EUExUploaderMgr/engineHeader/BUtility.h"; sourceTree = "<group>"; };
-		76DC01AE1B7E138D007C5E5F /* EBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EBrowserView.h; path = "../../../../../Desktop/Desktop/项目/uexUploaderMgr/uexUploaderMgr-master/EUExUploaderMgr/EUExUploaderMgr/engineHeader/EBrowserView.h"; sourceTree = "<group>"; };
-		76DC01AF1B7E138D007C5E5F /* WWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWidget.h; path = "../../../../../Desktop/Desktop/项目/uexUploaderMgr/uexUploaderMgr-master/EUExUploaderMgr/EUExUploaderMgr/engineHeader/WWidget.h"; sourceTree = "<group>"; };
 		F7D298011A68F0FD004DF18C /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		F7D298021A68F0FD004DF18C /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		F7D298031A68F0FD004DF18C /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
@@ -58,6 +55,13 @@
 		F7D298051A68F0FD004DF18C /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		F7D298061A68F0FD004DF18C /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		F7D298071A68F0FD004DF18C /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		F7EE01E61BA12CC600E3BA35 /* BUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUtility.h; sourceTree = "<group>"; };
+		F7EE01E71BA12CC600E3BA35 /* EBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBrowserView.h; sourceTree = "<group>"; };
+		F7EE01E81BA12CC600E3BA35 /* WWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWidget.h; sourceTree = "<group>"; };
+		F7EE01E91BA12CE700E3BA35 /* WWidgetMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWidgetMgr.h; sourceTree = "<group>"; };
+		F7EE01EA1BA12D0300E3BA35 /* ACEBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEBaseViewController.h; sourceTree = "<group>"; };
+		F7EE01EB1BA12D0300E3BA35 /* EBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBrowserController.h; sourceTree = "<group>"; };
+		F7EE01EC1BA12D0300E3BA35 /* EBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBrowserView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,9 +124,13 @@
 		03442C5C18B2326A00CEC18D /* engineHeader */ = {
 			isa = PBXGroup;
 			children = (
-				76DC01AD1B7E138D007C5E5F /* BUtility.h */,
-				76DC01AE1B7E138D007C5E5F /* EBrowserView.h */,
-				76DC01AF1B7E138D007C5E5F /* WWidget.h */,
+				F7EE01EA1BA12D0300E3BA35 /* ACEBaseViewController.h */,
+				F7EE01EB1BA12D0300E3BA35 /* EBrowserController.h */,
+				F7EE01EC1BA12D0300E3BA35 /* EBrowserView.h */,
+				F7EE01E91BA12CE700E3BA35 /* WWidgetMgr.h */,
+				F7EE01E61BA12CC600E3BA35 /* BUtility.h */,
+				F7EE01E71BA12CC600E3BA35 /* EBrowserView.h */,
+				F7EE01E81BA12CC600E3BA35 /* WWidget.h */,
 				03442C5D18B2326A00CEC18D /* EUExBase.h */,
 				03442C5E18B2326A00CEC18D /* EUExBaseDefine.h */,
 				03442C5F18B2326A00CEC18D /* EUtility.h */,

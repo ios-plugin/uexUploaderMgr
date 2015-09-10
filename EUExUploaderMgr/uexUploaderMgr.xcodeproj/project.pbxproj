@@ -44,7 +44,6 @@
 		3CDA1C9D18C19A5900AA00C7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3CDA1C9F18C19A5F00AA00C7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3CDA1CA118C19A6300AA00C7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		3CDA1CA418C19A8700AA00C7 /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
 		3CDA1CA518C19A8700AA00C7 /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
 		3CDA1CA618C19A8700AA00C7 /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 		3CDA1CA718C19A8700AA00C7 /* EUExUploaderMgr-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EUExUploaderMgr-Prefix.pch"; path = "EUExUploaderMgr/EUExUploaderMgr-Prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -76,6 +75,11 @@
 		DE201CFF1AAFEE0E001C46A5 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		DE201D001AAFEE0E001C46A5 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		DE201D011AAFEE0E001C46A5 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		F7EE01EF1BA1349200E3BA35 /* ACEBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEBaseViewController.h; sourceTree = "<group>"; };
+		F7EE01F11BA1349200E3BA35 /* EBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBrowserController.h; sourceTree = "<group>"; };
+		F7EE01F21BA1349200E3BA35 /* EBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBrowserView.h; sourceTree = "<group>"; };
+		F7EE01F31BA1349200E3BA35 /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
+		F7EE01F71BA1349200E3BA35 /* WWidgetMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWidgetMgr.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,10 +152,14 @@
 		3CDA1CA318C19A8700AA00C7 /* engineHeader */ = {
 			isa = PBXGroup;
 			children = (
+				F7EE01EF1BA1349200E3BA35 /* ACEBaseViewController.h */,
+				F7EE01F11BA1349200E3BA35 /* EBrowserController.h */,
+				F7EE01F21BA1349200E3BA35 /* EBrowserView.h */,
+				F7EE01F31BA1349200E3BA35 /* EUExBase.h */,
+				F7EE01F71BA1349200E3BA35 /* WWidgetMgr.h */,
 				42FC64FC1B830B9D00888337 /* BUtility.h */,
 				42FC64FD1B830B9D00888337 /* EBrowserView.h */,
 				42FC64FE1B830B9D00888337 /* WWidget.h */,
-				3CDA1CA418C19A8700AA00C7 /* EUExBase.h */,
 				3CDA1CA518C19A8700AA00C7 /* EUExBaseDefine.h */,
 				3CDA1CA618C19A8700AA00C7 /* EUtility.h */,
 			);

@@ -248,6 +248,9 @@
 		}
 		[formDict removeAllObjects];
 	}
+    if (meBrwView) {
+        meBrwView = nil;
+    }
 }
  
 - (void)stopNetService {
