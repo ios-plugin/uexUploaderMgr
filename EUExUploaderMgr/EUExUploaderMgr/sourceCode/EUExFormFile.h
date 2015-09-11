@@ -32,6 +32,9 @@
 @property(nonatomic, retain)NSString *receiveString;
 @property(nonatomic, retain)NSString *filePath;
 @property(nonatomic, retain)NSString *opid;
+
+@property (nonatomic, copy) NSString *verifyWithAppId;
+
 @property(nonatomic)BOOL isUploading;
 -(void)uploadingWithName:(NSString *)inName;
 -(void)getJPEGFromAssetForURL:(NSURL *)url upload:(ASIFormDataRequest*)request name:(NSString *)inName;
