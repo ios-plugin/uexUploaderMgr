@@ -179,7 +179,7 @@
 	self.receiveString = [request responseString];
 	upldsize  += bytes;
 	int perc = upldsize*100/filesize;
-	if (perc>100) {
+	if (perc>=100) {
 		perc = 100;
 	}
     if (euexObj) {
@@ -196,6 +196,7 @@
 		[fmanager removeItemAtPath:tempPath error:nil];
 	}
 	self.receiveString = [request responseString];
+    [euexObj uexOnUpLoadWithOpId:[self.opid intValue] fileSize:filesize percent:100 serverPath:@"" status:UEX_UPLOAD_UPLOADING];
     if (euexObj) {
         [euexObj uexOnUpLoadWithOpId:[self.opid intValue]fileSize:filesize percent:100 serverPath:receiveString status:UEX_UPLOAD_FINISH];
     }
