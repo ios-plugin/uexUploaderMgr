@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <uexplugins>
-    <plugin uexName="uexUploaderMgr" version="3.0.13" build = "13">
-        <info>13.修改了上传进度条达不到100%</info>
+    <plugin uexName="uexUploaderMgr" version="3.0.14" build = "14">
+        <info>14.添加IDE支持</info>
+        <build>13.修改了上传进度条达不到100%</build>
         <build>12.修改clean方法,setAppVerify新增加appId的信息</build>
         <build>11.验证的请求头的中的appid与key不匹配</build>
         <build>10.判断当前的验证的请求头的属于的应用</build>
