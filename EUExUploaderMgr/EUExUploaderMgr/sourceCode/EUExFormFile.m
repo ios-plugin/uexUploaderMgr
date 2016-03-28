@@ -148,7 +148,7 @@
         
         if (self.verifyWithAppId) {
             
-            [aHeaderDict setObject:self.verifyWithAppId forKey:@"x-mas-app-id"];
+            [dict setObject:self.verifyWithAppId forKey:@"x-mas-app-id"];
             
         }
         
