@@ -1,10 +1,10 @@
 /**
  *
- *	@file   	: EUExUploaderMgr.h  in EUExUploaderMgr
+ *	@file   	: uexGlobalUploaderManager.h  in EUExUploaderMgr
  *
  *	@author 	: CeriNo 
  * 
- *	@date   	: Created on 16/5/3.
+ *	@date   	: Created on 16/5/13.
  *
  *	@copyright 	: 2016 The AppCan Open Source Project.
  *
@@ -20,16 +20,32 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
-
+ 
 #import <Foundation/Foundation.h>
-#import "EUExBase.h"
 #import "uexUploader.h"
-@class uexUploader;
+@protocol uexUploaderDelegate;
 
-@interface EUExUploaderMgr : EUExBase<uexUploaderDelegate>
-
-
+#define uexGlobalUploaderMgr [uexGlobalUploaderManager sharedManager]
 
 
+@interface uexGlobalUploaderManager : NSObject<uexUploaderDelegate>
+
+
++ (instancetype)sharedManager;
+
+- (void)resumeBackgroundUploaders;
+
+- (BOOL)isIdentifierValid:(NSString *)identifier;
+- (void)addGlobalUploader:(uexUploader *)uploader;
+
+
+
+- (__kindof uexUploader *)uploaderWithIdentifier:(NSString *)identifier;
+
+
+- (void)handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler;
+
+
+- (void)notifyBackgroundUploaderSessionInvalidWithIdentifier:(NSString *)identifier;
+- (void)notifyBackgroundUploaderSessionFinishingEventsForBackgroundWithIdentifier:(NSString *)identifier;
 @end

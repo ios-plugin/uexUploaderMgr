@@ -1,10 +1,10 @@
 /**
  *
- *	@file   	: EUExUploaderMgr.h  in EUExUploaderMgr
+ *	@file   	: uexUploadHelper.h  in EUExUploaderMgr
  *
  *	@author 	: CeriNo 
  * 
- *	@date   	: Created on 16/5/3.
+ *	@date   	: Created on 16/5/12.
  *
  *	@copyright 	: 2016 The AppCan Open Source Project.
  *
@@ -20,16 +20,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
-
+ 
 #import <Foundation/Foundation.h>
-#import "EUExBase.h"
-#import "uexUploader.h"
-@class uexUploader;
 
-@interface EUExUploaderMgr : EUExBase<uexUploaderDelegate>
+#define UEXLog(...) uexUploadLog(__VA_ARGS__);
+#define UEXLogParameterError() UEXLog(@"%s ERROR!Invalid parameter!",__func__)
 
+NS_ASSUME_NONNULL_BEGIN
+@class EUExBase;
+@interface uexUploadHelper : NSObject
 
-
+void uexUploadLog(NSString *format,...);
++ (void)setDebugEnable:(BOOL)isEnabled;
++ (BOOL)isDebug;
++ (NSString *)MIMETypeForPathExtension:(NSString *)ext;
++ (NSDictionary<NSString *,NSString *> *)AppCanHTTPHeadersWithEUExObj:(nullable __kindof EUExBase *)euexObj;
 
 @end
+
+NS_ASSUME_NONNULL_END
