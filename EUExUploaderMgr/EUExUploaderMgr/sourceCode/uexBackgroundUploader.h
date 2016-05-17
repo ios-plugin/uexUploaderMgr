@@ -1,10 +1,10 @@
 /**
  *
- *	@file   	: EUExUploaderMgr.h  in EUExUploaderMgr
+ *	@file   	: uexBackgroundUploader.h  in EUExUploaderMgr
  *
  *	@author 	: CeriNo 
  * 
- *	@date   	: Created on 16/5/3.
+ *	@date   	: Created on 16/5/13.
  *
  *	@copyright 	: 2016 The AppCan Open Source Project.
  *
@@ -20,16 +20,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
-
+ 
 #import <Foundation/Foundation.h>
-#import "EUExBase.h"
 #import "uexUploader.h"
-@class uexUploader;
+@class uexUploadInfo;
+@interface uexBackgroundUploader : uexUploader;
+@property (nonatomic,strong)NSString *tempFilePath;
 
-@interface EUExUploaderMgr : EUExBase<uexUploaderDelegate>
++ (NSString *)sessionPrefix;
 
-
++ (instancetype)resumeWithInfo:(uexUploadInfo *)info;
 
 
 @end

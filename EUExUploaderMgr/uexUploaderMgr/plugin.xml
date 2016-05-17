@@ -3,7 +3,12 @@
     <plugin name="uexUploaderMgr">
         <method name="setHeaders"></method>
         <method name="createUploader"></method>
-		<method name="closeUploader"></method>
+        <method name="closeUploader"></method>
         <method name="uploadFile"></method>
-	</plugin>
+        <method name="appendFileData"></method>
+        <method name="startUploader"></method>
+        <method name="getInfo" sync="true"></method>
+        <method name="observeUploader"></method>
+        <method name="setDebugMode"></method>
+    </plugin>
 </uexplugins>

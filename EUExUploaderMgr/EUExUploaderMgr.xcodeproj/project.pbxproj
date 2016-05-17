@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		03442C3718B2317900CEC18D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03442C3618B2317900CEC18D /* Foundation.framework */; };
-		03442C7318B2326A00CEC18D /* EUExUploaderMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 03442C6118B2326A00CEC18D /* EUExUploaderMgr.m */; };
-		03442C7418B2326A00CEC18D /* EUExFormFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 03442C7218B2326A00CEC18D /* EUExFormFile.m */; };
+		42C9A7101CD879160013035B /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9A70F1CD879160013035B /* AFNetworking.framework */; };
+		42C9A7151CD88D5D0013035B /* EUExUploaderMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C9A7141CD88D5D0013035B /* EUExUploaderMgr.m */; };
+		42C9A7181CD88D9A0013035B /* uexUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C9A7171CD88D9A0013035B /* uexUploader.m */; };
+		42CAC7E21CE4578D009A4AB5 /* uexUploadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CAC7E11CE4578D009A4AB5 /* uexUploadHelper.m */; };
+		42CAC7E61CE463A7009A4AB5 /* uexUploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CAC7E51CE463A7009A4AB5 /* uexUploadFile.m */; };
+		42CAC7F71CE571BC009A4AB5 /* uexUploadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CAC7F61CE571BC009A4AB5 /* uexUploadInfo.m */; };
+		42CAC7FC1CE57EA8009A4AB5 /* uexBackgroundUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CAC7FB1CE57EA8009A4AB5 /* uexBackgroundUploader.m */; };
+		42CAC8051CE5DCCE009A4AB5 /* uexGlobalUploaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CAC8041CE5DCCE009A4AB5 /* uexGlobalUploaderManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,9 +36,6 @@
 		03442C3A18B2317900CEC18D /* EUExUploaderMgr-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EUExUploaderMgr-Prefix.pch"; sourceTree = "<group>"; };
 		03442C5D18B2326A00CEC18D /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
 		03442C5E18B2326A00CEC18D /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
-		03442C5F18B2326A00CEC18D /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
-		03442C6018B2326A00CEC18D /* EUExUploaderMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExUploaderMgr.h; sourceTree = "<group>"; };
-		03442C6118B2326A00CEC18D /* EUExUploaderMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EUExUploaderMgr.m; sourceTree = "<group>"; };
 		03442C6418B2326A00CEC18D /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		03442C6518B2326A00CEC18D /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
 		03442C6618B2326A00CEC18D /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
@@ -46,8 +49,28 @@
 		03442C6E18B2326A00CEC18D /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
 		03442C6F18B2326A00CEC18D /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		03442C7018B2326A00CEC18D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		03442C7118B2326A00CEC18D /* EUExFormFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExFormFile.h; sourceTree = "<group>"; };
-		03442C7218B2326A00CEC18D /* EUExFormFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EUExFormFile.m; sourceTree = "<group>"; };
+		42C9A70F1CD879160013035B /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
+		42C9A7131CD88D5D0013035B /* EUExUploaderMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExUploaderMgr.h; sourceTree = "<group>"; };
+		42C9A7141CD88D5D0013035B /* EUExUploaderMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EUExUploaderMgr.m; sourceTree = "<group>"; };
+		42C9A7161CD88D9A0013035B /* uexUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexUploader.h; sourceTree = "<group>"; };
+		42C9A7171CD88D9A0013035B /* uexUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexUploader.m; sourceTree = "<group>"; };
+		42CAC7E01CE4578D009A4AB5 /* uexUploadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexUploadHelper.h; sourceTree = "<group>"; };
+		42CAC7E11CE4578D009A4AB5 /* uexUploadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexUploadHelper.m; sourceTree = "<group>"; };
+		42CAC7E31CE45AC8009A4AB5 /* WidgetOneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetOneDelegate.h; sourceTree = "<group>"; };
+		42CAC7E41CE463A7009A4AB5 /* uexUploadFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexUploadFile.h; sourceTree = "<group>"; };
+		42CAC7E51CE463A7009A4AB5 /* uexUploadFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexUploadFile.m; sourceTree = "<group>"; };
+		42CAC7EF1CE564BF009A4AB5 /* ACEArgsPacking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEArgsPacking.h; sourceTree = "<group>"; };
+		42CAC7F01CE564BF009A4AB5 /* ACEAvailable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEAvailable.h; sourceTree = "<group>"; };
+		42CAC7F11CE564BF009A4AB5 /* ACEEXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEEXTScope.h; sourceTree = "<group>"; };
+		42CAC7F21CE564BF009A4AB5 /* ACEMetamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEMetamacros.h; sourceTree = "<group>"; };
+		42CAC7F31CE564BF009A4AB5 /* ACEUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEUtils.h; sourceTree = "<group>"; };
+		42CAC7F41CE56615009A4AB5 /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
+		42CAC7F51CE571BC009A4AB5 /* uexUploadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexUploadInfo.h; sourceTree = "<group>"; };
+		42CAC7F61CE571BC009A4AB5 /* uexUploadInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexUploadInfo.m; sourceTree = "<group>"; };
+		42CAC7FA1CE57EA8009A4AB5 /* uexBackgroundUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexBackgroundUploader.h; sourceTree = "<group>"; };
+		42CAC7FB1CE57EA8009A4AB5 /* uexBackgroundUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexBackgroundUploader.m; sourceTree = "<group>"; };
+		42CAC8031CE5DCCE009A4AB5 /* uexGlobalUploaderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexGlobalUploaderManager.h; sourceTree = "<group>"; };
+		42CAC8041CE5DCCE009A4AB5 /* uexGlobalUploaderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexGlobalUploaderManager.m; sourceTree = "<group>"; };
 		F7D298011A68F0FD004DF18C /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		F7D298021A68F0FD004DF18C /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		F7D298031A68F0FD004DF18C /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
@@ -70,6 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03442C3718B2317900CEC18D /* Foundation.framework in Frameworks */,
+				42C9A7101CD879160013035B /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,11 +128,12 @@
 		03442C3818B2317900CEC18D /* EUExUploaderMgr */ = {
 			isa = PBXGroup;
 			children = (
+				42CAC7EE1CE564BF009A4AB5 /* ACEUtils */,
 				03442C5C18B2326A00CEC18D /* engineHeader */,
-				03442C6018B2326A00CEC18D /* EUExUploaderMgr.h */,
-				03442C6118B2326A00CEC18D /* EUExUploaderMgr.m */,
 				03442C6218B2326A00CEC18D /* sourceCode */,
 				03442C3918B2317900CEC18D /* Supporting Files */,
+				42C9A7131CD88D5D0013035B /* EUExUploaderMgr.h */,
+				42C9A7141CD88D5D0013035B /* EUExUploaderMgr.m */,
 			);
 			path = EUExUploaderMgr;
 			sourceTree = "<group>";
@@ -124,6 +149,7 @@
 		03442C5C18B2326A00CEC18D /* engineHeader */ = {
 			isa = PBXGroup;
 			children = (
+				42CAC7E31CE45AC8009A4AB5 /* WidgetOneDelegate.h */,
 				F7EE01EA1BA12D0300E3BA35 /* ACEBaseViewController.h */,
 				F7EE01EB1BA12D0300E3BA35 /* EBrowserController.h */,
 				F7EE01EC1BA12D0300E3BA35 /* EBrowserView.h */,
@@ -133,7 +159,7 @@
 				F7EE01E81BA12CC600E3BA35 /* WWidget.h */,
 				03442C5D18B2326A00CEC18D /* EUExBase.h */,
 				03442C5E18B2326A00CEC18D /* EUExBaseDefine.h */,
-				03442C5F18B2326A00CEC18D /* EUtility.h */,
+				42CAC7F41CE56615009A4AB5 /* EUtility.h */,
 			);
 			path = engineHeader;
 			sourceTree = "<group>";
@@ -141,10 +167,21 @@
 		03442C6218B2326A00CEC18D /* sourceCode */ = {
 			isa = PBXGroup;
 			children = (
+				42C9A70F1CD879160013035B /* AFNetworking.framework */,
 				F7D298001A68F0FD004DF18C /* JSON */,
 				03442C6318B2326A00CEC18D /* ASIHttpRequest */,
-				03442C7118B2326A00CEC18D /* EUExFormFile.h */,
-				03442C7218B2326A00CEC18D /* EUExFormFile.m */,
+				42C9A7161CD88D9A0013035B /* uexUploader.h */,
+				42C9A7171CD88D9A0013035B /* uexUploader.m */,
+				42CAC7FA1CE57EA8009A4AB5 /* uexBackgroundUploader.h */,
+				42CAC7FB1CE57EA8009A4AB5 /* uexBackgroundUploader.m */,
+				42CAC8031CE5DCCE009A4AB5 /* uexGlobalUploaderManager.h */,
+				42CAC8041CE5DCCE009A4AB5 /* uexGlobalUploaderManager.m */,
+				42CAC7E41CE463A7009A4AB5 /* uexUploadFile.h */,
+				42CAC7E51CE463A7009A4AB5 /* uexUploadFile.m */,
+				42CAC7E01CE4578D009A4AB5 /* uexUploadHelper.h */,
+				42CAC7E11CE4578D009A4AB5 /* uexUploadHelper.m */,
+				42CAC7F51CE571BC009A4AB5 /* uexUploadInfo.h */,
+				42CAC7F61CE571BC009A4AB5 /* uexUploadInfo.m */,
 			);
 			path = sourceCode;
 			sourceTree = "<group>";
@@ -167,6 +204,18 @@
 				03442C7018B2326A00CEC18D /* Reachability.h */,
 			);
 			path = ASIHttpRequest;
+			sourceTree = "<group>";
+		};
+		42CAC7EE1CE564BF009A4AB5 /* ACEUtils */ = {
+			isa = PBXGroup;
+			children = (
+				42CAC7EF1CE564BF009A4AB5 /* ACEArgsPacking.h */,
+				42CAC7F01CE564BF009A4AB5 /* ACEAvailable.h */,
+				42CAC7F11CE564BF009A4AB5 /* ACEEXTScope.h */,
+				42CAC7F21CE564BF009A4AB5 /* ACEMetamacros.h */,
+				42CAC7F31CE564BF009A4AB5 /* ACEUtils.h */,
+			);
+			path = ACEUtils;
 			sourceTree = "<group>";
 		};
 		F7D298001A68F0FD004DF18C /* JSON */ = {
@@ -234,8 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03442C7418B2326A00CEC18D /* EUExFormFile.m in Sources */,
-				03442C7318B2326A00CEC18D /* EUExUploaderMgr.m in Sources */,
+				42CAC7FC1CE57EA8009A4AB5 /* uexBackgroundUploader.m in Sources */,
+				42CAC7E61CE463A7009A4AB5 /* uexUploadFile.m in Sources */,
+				42C9A7181CD88D9A0013035B /* uexUploader.m in Sources */,
+				42CAC7E21CE4578D009A4AB5 /* uexUploadHelper.m in Sources */,
+				42CAC8051CE5DCCE009A4AB5 /* uexGlobalUploaderManager.m in Sources */,
+				42CAC7F71CE571BC009A4AB5 /* uexUploadInfo.m in Sources */,
+				42C9A7151CD88D5D0013035B /* EUExUploaderMgr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,15 +370,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexUploaderMgr";
 				DSTROOT = /tmp/EUExUploaderMgr.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EUExUploaderMgr/sourceCode",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EUExUploaderMgr/EUExUploaderMgr-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = uexUploaderMgr;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
 		};
@@ -332,15 +392,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexUploaderMgr";
 				DSTROOT = /tmp/EUExUploaderMgr.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EUExUploaderMgr/sourceCode",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EUExUploaderMgr/EUExUploaderMgr-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = uexUploaderMgr;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};

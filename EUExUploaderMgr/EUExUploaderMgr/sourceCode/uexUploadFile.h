@@ -1,10 +1,10 @@
 /**
  *
- *	@file   	: EUExUploaderMgr.h  in EUExUploaderMgr
+ *	@file   	: uexUploadFile.h  in EUExUploaderMgr
  *
  *	@author 	: CeriNo 
  * 
- *	@date   	: Created on 16/5/3.
+ *	@date   	: Created on 16/5/12.
  *
  *	@copyright 	: 2016 The AppCan Open Source Project.
  *
@@ -20,14 +20,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
-
+ 
 #import <Foundation/Foundation.h>
-#import "EUExBase.h"
-#import "uexUploader.h"
-@class uexUploader;
 
-@interface EUExUploaderMgr : EUExBase<uexUploaderDelegate>
+@interface uexUploadFile : NSObject
+
+@property (nonatomic,strong,readonly)NSString *MIMEType;
+@property (nonatomic,strong,readonly)NSString *fileName;
+
+
+- (instancetype)initWithFilePath:(NSString *)filePath;
+
+- (void)editImageWithScaledWidth:(CGFloat)scaledWidth compressLevel:(NSInteger)compressLevel;
+
+- (NSData *)fileData;
 
 
 
