@@ -240,7 +240,6 @@ static dispatch_queue_t _uexUploadMgrBackgroundOperationQueue;
         info.status = uexUploaderStatusSuccess;
     }
     info.responseString = [[NSString alloc]initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(info.responseString);
     NSError *e = nil;
     [[NSFileManager defaultManager]removeItemAtPath:info.tempFilePath error:&e];
     if (e) {
