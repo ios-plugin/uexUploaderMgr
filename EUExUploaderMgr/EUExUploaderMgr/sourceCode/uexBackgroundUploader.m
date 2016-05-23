@@ -95,6 +95,8 @@ static NSString * kUexBackgroundUploadTempFileFolderPath;
 
 - (void)setupSessionManager{
     self.sessionManager = [[uexUploadBackgroundSessionManager alloc]initWithIdentifier:self.identifier];
+    self.sessionManager.securityPolicy.allowInvalidCertificates = YES;
+    self.sessionManager.securityPolicy.validatesDomainName = NO;
 
 }
 
