@@ -212,7 +212,7 @@
         return;
     }
     NSInteger quality = inArguments.count > 3 ? [inArguments[3] integerValue] : 0;
-    CGFloat maxWidth = inArguments.count > 4 ? [inArguments[3] floatValue] : 0;
+    CGFloat maxWidth = inArguments.count > 4 ? [inArguments[4] floatValue] : 0;
     __kindof uexUploader *uploader = [self uploaderForIdentifier:identifier];
     [uploader appendDataWithFilePath:filePath field:field editingImageWithScaledWidth:maxWidth compressLevel:quality];
     [uploader startUpload];
