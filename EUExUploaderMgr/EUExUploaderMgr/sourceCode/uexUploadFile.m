@@ -117,6 +117,7 @@
             self.imageToEdit = [UIImage imageWithCGImage:representation.fullResolutionImage];
             self.MIMEType = [uexUploadHelper MIMETypeForPathExtension:@"jpg"];
             self.fileName = representation.filename;
+            self.editedData = UIImageJPEGRepresentation(self.imageToEdit, 0.9);
             Unlock();
         } failureBlock:^(NSError *error) {
             UEXLog(@"fetch asset image error:%@",error.localizedDescription);

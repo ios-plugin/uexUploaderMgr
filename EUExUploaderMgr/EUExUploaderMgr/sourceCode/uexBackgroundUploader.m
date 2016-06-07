@@ -95,6 +95,8 @@ static NSString * kUexBackgroundUploadTempFileFolderPath;
 
 - (void)setupSessionManager{
     self.sessionManager = [[uexUploadBackgroundSessionManager alloc]initWithIdentifier:self.identifier];
+    self.sessionManager.securityPolicy.allowInvalidCertificates = YES;
+    self.sessionManager.securityPolicy.validatesDomainName = NO;
 
 }
 
@@ -240,7 +242,6 @@ static dispatch_queue_t _uexUploadMgrBackgroundOperationQueue;
         info.status = uexUploaderStatusSuccess;
     }
     info.responseString = [[NSString alloc]initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(info.responseString);
     NSError *e = nil;
     [[NSFileManager defaultManager]removeItemAtPath:info.tempFilePath error:&e];
     if (e) {

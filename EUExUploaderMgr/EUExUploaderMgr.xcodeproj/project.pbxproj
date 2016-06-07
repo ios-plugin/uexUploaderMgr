@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03442C3718B2317900CEC18D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03442C3618B2317900CEC18D /* Foundation.framework */; };
+		4224236C1CEBFE3A009530DA /* AFNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 42C9A70F1CD879160013035B /* AFNetworking.framework */; };
 		42C9A7101CD879160013035B /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9A70F1CD879160013035B /* AFNetworking.framework */; };
 		42C9A7151CD88D5D0013035B /* EUExUploaderMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C9A7141CD88D5D0013035B /* EUExUploaderMgr.m */; };
 		42C9A7181CD88D9A0013035B /* uexUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C9A7171CD88D9A0013035B /* uexUploader.m */; };
@@ -22,9 +23,10 @@
 		03442C3118B2317900CEC18D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
+			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				4224236C1CEBFE3A009530DA /* AFNetworking.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,19 +38,6 @@
 		03442C3A18B2317900CEC18D /* EUExUploaderMgr-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EUExUploaderMgr-Prefix.pch"; sourceTree = "<group>"; };
 		03442C5D18B2326A00CEC18D /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
 		03442C5E18B2326A00CEC18D /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
-		03442C6418B2326A00CEC18D /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
-		03442C6518B2326A00CEC18D /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
-		03442C6618B2326A00CEC18D /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
-		03442C6718B2326A00CEC18D /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
-		03442C6818B2326A00CEC18D /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
-		03442C6918B2326A00CEC18D /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
-		03442C6A18B2326A00CEC18D /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
-		03442C6B18B2326A00CEC18D /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
-		03442C6C18B2326A00CEC18D /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
-		03442C6D18B2326A00CEC18D /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
-		03442C6E18B2326A00CEC18D /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
-		03442C6F18B2326A00CEC18D /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
-		03442C7018B2326A00CEC18D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		42C9A70F1CD879160013035B /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		42C9A7131CD88D5D0013035B /* EUExUploaderMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExUploaderMgr.h; sourceTree = "<group>"; };
 		42C9A7141CD88D5D0013035B /* EUExUploaderMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EUExUploaderMgr.m; sourceTree = "<group>"; };
@@ -169,7 +158,6 @@
 			children = (
 				42C9A70F1CD879160013035B /* AFNetworking.framework */,
 				F7D298001A68F0FD004DF18C /* JSON */,
-				03442C6318B2326A00CEC18D /* ASIHttpRequest */,
 				42C9A7161CD88D9A0013035B /* uexUploader.h */,
 				42C9A7171CD88D9A0013035B /* uexUploader.m */,
 				42CAC7FA1CE57EA8009A4AB5 /* uexBackgroundUploader.h */,
@@ -184,26 +172,6 @@
 				42CAC7F61CE571BC009A4AB5 /* uexUploadInfo.m */,
 			);
 			path = sourceCode;
-			sourceTree = "<group>";
-		};
-		03442C6318B2326A00CEC18D /* ASIHttpRequest */ = {
-			isa = PBXGroup;
-			children = (
-				03442C6418B2326A00CEC18D /* ASIAuthenticationDialog.h */,
-				03442C6518B2326A00CEC18D /* ASICacheDelegate.h */,
-				03442C6618B2326A00CEC18D /* ASIDataCompressor.h */,
-				03442C6718B2326A00CEC18D /* ASIDataDecompressor.h */,
-				03442C6818B2326A00CEC18D /* ASIDownloadCache.h */,
-				03442C6918B2326A00CEC18D /* ASIFormDataRequest.h */,
-				03442C6A18B2326A00CEC18D /* ASIHTTPRequest.h */,
-				03442C6B18B2326A00CEC18D /* ASIHTTPRequestConfig.h */,
-				03442C6C18B2326A00CEC18D /* ASIHTTPRequestDelegate.h */,
-				03442C6D18B2326A00CEC18D /* ASIInputStream.h */,
-				03442C6E18B2326A00CEC18D /* ASINetworkQueue.h */,
-				03442C6F18B2326A00CEC18D /* ASIProgressDelegate.h */,
-				03442C7018B2326A00CEC18D /* Reachability.h */,
-			);
-			path = ASIHttpRequest;
 			sourceTree = "<group>";
 		};
 		42CAC7EE1CE564BF009A4AB5 /* ACEUtils */ = {

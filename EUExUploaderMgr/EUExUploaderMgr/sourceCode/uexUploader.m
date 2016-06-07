@@ -85,6 +85,8 @@
             [self.euexObj uexUploaderDidCompleteUploadTask:self];
         }
     }];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.securityPolicy.validatesDomainName = NO;
     self.sessionManager = manager;
 }
 
@@ -100,8 +102,9 @@
                                parameters:nil
                 constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                                     [self.files enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, uexUploadFile * _Nonnull obj, BOOL * _Nonnull stop) {
-                                        if (obj.fileData) {
-                                            [formData appendPartWithFileData:obj.fileData  name:key fileName:obj.fileName mimeType:obj.MIMEType];
+                                        NSData *data = obj.fileData;
+                                        if (data) {
+                                            [formData appendPartWithFileData:data  name:key fileName:obj.fileName mimeType:obj.MIMEType];
                                         }
                                     }];
                                     [self.files removeAllObjects];
