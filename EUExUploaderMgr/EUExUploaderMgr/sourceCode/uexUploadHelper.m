@@ -24,13 +24,9 @@
 #import "uexUploadHelper.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <CommonCrypto/CommonCrypto.h>
-#import "WidgetOneDelegate.h"
-#import "WWidgetMgr.h"
-#import "WWidget.h"
-#import "EBrowserView.h"
-#import "EUtility.h"
-#import "BUtility.h"
-#import "EUExBase.h"
+
+
+
 
 #ifdef DEBUG
 #define XCODE_DEBUG_MODE 1
@@ -60,9 +56,7 @@ void uexUploadLog(NSString *format,...){
     debugEnabled = isEnabled;
 }
 
-+ (WWidget *)mainWidget{
-    return theApp.mwWgtMgr.mainWidget;
-}
+
 
 + (NSString *)MIMETypeForPathExtension:(NSString *)ext{
     NSString *UTI = (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)ext, NULL);
@@ -78,9 +72,9 @@ void uexUploadLog(NSString *format,...){
 + (NSDictionary<NSString *,NSString *> *)AppCanHTTPHeadersWithEUExObj:(nullable __kindof EUExBase *)euexObj;
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    WWidget *widget = euexObj.meBrwView.mwWgt;
+    id<AppCanWidgetObject> widget = euexObj.webViewEngine.widget;
     if (!widget) {
-        widget = [self mainWidget];
+        widget = AppCanMainWidget();
     }
     NSString *time= [self timestampStringFromDate:[NSDate date]];
     NSString *appId = @"";
@@ -88,7 +82,7 @@ void uexUploadLog(NSString *format,...){
     
     NSString *pluginStr = @"widget/plugin";
     if ([widget.indexUrl rangeOfString:pluginStr].length == [pluginStr length]) {
-        WWidget *mainWgt = [self mainWidget];
+        id<AppCanWidgetObject> mainWgt = AppCanMainWidget();
         appId = mainWgt.appId;
         appKey = mainWgt.widgetOneId;
         

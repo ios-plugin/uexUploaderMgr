@@ -23,7 +23,7 @@
 
 #import "uexUploadInfo.h"
 #import "uexBackgroundUploader.h"
-#import "ACEUtils.h"
+
 #define Lock() dispatch_semaphore_wait(self->_lock, DISPATCH_TIME_FOREVER)
 #define Unlock() dispatch_semaphore_signal(self->_lock)
 

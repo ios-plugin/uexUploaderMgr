@@ -25,8 +25,8 @@
 #import "JSON.h"
 #import "EUExUploaderMgr.h"
 #import "uexUploadFile.h"
-#import "ACEUtils.h"
-#import "EUtility.h"
+
+
 #import "uexUploadInfo.h"
 #import "uexGlobalUploaderManager.h"
 
@@ -38,7 +38,7 @@
     if (self) {
         _identifier = identidier;
         _euexObj = euexObj;
-        _observer = euexObj.meBrwView;
+        _observer = euexObj.webViewEngine;
         _files = [NSMutableDictionary dictionary];
         _serverURL = serverURL;
         _type = uexUploaderTypeDefault;
@@ -151,15 +151,9 @@
     if (!self.observer) {
         return;
     }
-    if (ACE_Available()) {
-        [EUtility browserView:self.observer
-  callbackWithFunctionKeyPath:@"uexUploaderMgr.onStatus"
-                    arguments:ACE_ArgsPack(self.identifier,@(self.totalSize),@(self.percent),self.responseString,@(self.status))
-                   completion:nil];
-    }else{
-        NSString *jsStr = [NSString stringWithFormat:@"if(uexUploaderMgr.onStatus){uexUploaderMgr.onStatus('%@',%@,%@,%@,%@)}",self.identifier,@(self.totalSize),@(self.percent),[self.responseString JSONFragment],@(self.status)];
-        [EUtility brwView:self.observer evaluateScript:jsStr];
-    }
+    [self.observer callbackWithFunctionKeyPath:@"uexUploaderMgr.onStatus" arguments:ACArgsPack(self.identifier,@(self.totalSize),@(self.percent),self.responseString,@(self.status))];
+    [self.cb executeWithArguments:ACArgsPack(@(self.totalSize),@(self.percent),self.responseString,@(self.status))];
+    
 }
 
 - (void)cancelUpload{

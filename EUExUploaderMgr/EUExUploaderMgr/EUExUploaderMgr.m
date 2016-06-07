@@ -27,9 +27,11 @@
 #import "uexBackgroundUploader.h"
 #import "uexGlobalUploaderManager.h"
 #import "JSON.h"
-#import "ACEUtils.h"
+
 #import "uexUploadInfo.h"
 
+#define UEX_TRUE @(YES)
+#define UEX_FALSE @(NO)
 
 
 @interface EUExUploaderMgr()
@@ -49,14 +51,16 @@
     return YES;
 }
 
-- (instancetype)initWithBrwView:(EBrowserView *)eInBrwView
+
+- (instancetype)initWithWebViewEngine:(id<AppCanWebViewEngineObject>)engine
 {
-    self = [super initWithBrwView:eInBrwView];
+    self = [super initWithWebViewEngine:engine];
     if (self) {
         _uploaders = [NSMutableDictionary dictionary];
     }
     return self;
 }
+
 
 - (void)clean{
     [self.uploaders enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, uexUploader * _Nonnull obj, BOOL * _Nonnull stop) {
@@ -75,7 +79,7 @@
 }
 
 
-
+#ifdef DEBUG
 
 - (void)test:(NSMutableArray *)inArguments{
     NSString *identifier = @"myID2";
@@ -96,56 +100,31 @@
 
 }
 
+#endif
 
-#define UEX_STRING(x) ([self getStringValue:x])
 
-- (void)createUploader:(NSMutableArray *)inArguments{
+
+- (NSNumber *)createUploader:(NSMutableArray *)inArguments{
     __block NSNumber *result = @1;
-    __block NSString *identifier = nil;
+    ACArgsUnpack(NSString *identifier,NSString *serverURL,NSDictionary *ext) = inArguments;
     @onExit{
-        if (ACE_Available()) {
-            [EUtility browserView:self.meBrwView
-      callbackWithFunctionKeyPath:@"uexUploaderMgr.cbCreateUploader"
-                        arguments:ACE_ArgsPack(identifier,@2,result)
-                       completion:nil];
-        }else{
-            if (!identifier) {
-                identifier = @"null";
-            }else{
-                identifier = [identifier JSONFragment];
-            }
-            NSString *jsStr = [NSString stringWithFormat:@"if(uexUploaderMgr.cbCreateUploader){uexUploaderMgr.cbCreateUploader(%@,%@,%@)}",identifier,@2,result];
-            [EUtility brwView:self.meBrwView evaluateScript:jsStr];
-        }
+        [self.webViewEngine callbackWithFunctionKeyPath:@"uexUploaderMgr.cbCreateUploader" arguments:ACArgsPack(identifier,@2,result)];
     };
     
-    
-    if([inArguments count] < 2){
-        UEXLogParameterError();
-        return;
-    }
-    identifier = UEX_STRING(inArguments[0]);
-    NSString *serverURL = UEX_STRING(inArguments[1]);
     if (!identifier
         || ![uexGlobalUploaderMgr isIdentifierValid:identifier ]
         || [self.uploaders.allKeys containsObject:identifier]
         || !serverURL
         || ![serverURL.lowercaseString containsString:@"http"]) {
         UEXLogParameterError();
-        return;
+        return UEX_FALSE;
     }
 
     uexUploaderType type = uexUploaderTypeDefault;
-    NSDictionary *ext = nil;
-    if (inArguments.count > 2) {
-        ext = [inArguments[2] JSONValue];
-        if (![ext isKindOfClass:[NSDictionary class]]) {
-            ext = nil;
-        }
-    }
     if(ext){
-        if (ext[@"type"]) {
-            type = [ext[@"type"] integerValue];
+        NSNumber *typeNum = numberArg(ext[@"type"]);
+        if (typeNum) {
+            type = [typeNum integerValue];
         }
     }
     switch (type) {
@@ -167,113 +146,100 @@
         }
     }
     result = @0;
-    
+    return UEX_TRUE;
 }
 
-- (void)closeUploader:(NSMutableArray *)inArguments{
-    if([inArguments count] < 1){
+- (NSNumber *)closeUploader:(NSMutableArray *)inArguments{
+
+    ACArgsUnpack(NSString *identifier) = inArguments;
+    if (!identifier || identifier.length == 0) {
         UEXLogParameterError();
-        return;
+        return UEX_FALSE;
     }
-    NSString *identifier = UEX_STRING(inArguments[0]);
+
     __kindof uexUploader *uploader = nil;
     uploader = [uexGlobalUploaderMgr uploaderWithIdentifier:identifier];
     if (!uploader) {
         uploader = self.uploaders[identifier];
     }
+
     [uploader cancelUpload];
+    return UEX_TRUE;
 }
 
-- (void)setHeaders:(NSMutableArray *)inArguments{
-    if([inArguments count] < 2){
+- (NSNumber *)setHeaders:(NSMutableArray *)inArguments{
+
+    ACArgsUnpack(NSString *identifier, NSDictionary *info) = inArguments;
+    
+
+    if(!identifier || !info){
         UEXLogParameterError();
-        return;
+        return UEX_FALSE;
     }
-    NSString *identifier = UEX_STRING(inArguments[0]);
-    id info = [inArguments[1] JSONValue];
-    if(!identifier || !info || ![info isKindOfClass:[NSDictionary class]]){
-        UEXLogParameterError();
-        return;
-    }
-    __kindof uexUploader *uploader = [self uploaderForIdentifier:identifier];
+    uexUploader *uploader = [self uploaderForIdentifier:identifier];
     [uploader setHeaders:info];
+    return  UEX_TRUE;
 }
 
 
 - (void)uploadFile:(NSMutableArray *)inArguments{
-    if([inArguments count] < 3){
-        return;
-    }
-    NSString *identifier = UEX_STRING(inArguments[0]);
-    NSString *filePath = [self absPath:UEX_STRING(inArguments[1])];
-    NSString *field = UEX_STRING(inArguments[2]);
+
+    ACArgsUnpack(NSString *identifier,NSString *filePath,NSString *field,NSNumber *qualityNum,NSNumber *maxWidthNum) = inArguments;
+    ACJSFunctionRef *cb = JSFunctionArg(inArguments.lastObject);
+    filePath = [self absPath:filePath];
+
     if (!identifier || !filePath || !field) {
         UEXLogParameterError();
         return;
     }
-    NSInteger quality = inArguments.count > 3 ? [inArguments[3] integerValue] : 0;
-    CGFloat maxWidth = inArguments.count > 4 ? [inArguments[4] floatValue] : 0;
+    NSInteger quality = [qualityNum integerValue];
+    CGFloat maxWidth = [maxWidthNum floatValue];
     __kindof uexUploader *uploader = [self uploaderForIdentifier:identifier];
+    uploader.cb = cb;
     [uploader appendDataWithFilePath:filePath field:field editingImageWithScaledWidth:maxWidth compressLevel:quality];
     [uploader startUpload];
 }
 
-- (void)appendFileData:(NSMutableArray *)inArguments{
-    if([inArguments count] < 1){
-        UEXLogParameterError();
-        return;
-    }
-    id info = [inArguments[0] JSONValue];
-    if(!info || ![info isKindOfClass:[NSDictionary class]]){
-        UEXLogParameterError();
-        return;
-    }
-
-    NSString *identifier = UEX_STRING(info[@"id"]);
-    NSString *filePath = [self absPath:UEX_STRING(info[@"filePath"])];
-    NSString *field = UEX_STRING(info[@"field"]);
+- (NSNumber *)appendFileData:(NSMutableArray *)inArguments{
+    ACArgsUnpack(NSDictionary *info) = inArguments;
+    
+    NSString *identifier = stringArg(info[@"id"]);
+    NSString *filePath = [self absPath:stringArg(info[@"filePath"])];
+    NSString *field = stringArg(info[@"field"]);
     NSInteger quality = [info[@"quality"] integerValue];
     CGFloat maxWidth = [info[@"maxWidth"] floatValue];
     if (!identifier || !filePath || !field) {
         UEXLogParameterError();
-        return;
+        return UEX_FALSE;
     }
     __kindof uexUploader *uploader = [self uploaderForIdentifier:identifier];
     [uploader appendDataWithFilePath:filePath field:field editingImageWithScaledWidth:maxWidth compressLevel:quality];
+    return  UEX_TRUE;
 }
 
 - (void)startUploader:(NSMutableArray *)inArguments{
-    if([inArguments count] < 1){
-        UEXLogParameterError();
-        return;
-    }
-     NSString *identifier = UEX_STRING(inArguments[0]);
+    ACArgsUnpack(NSString *identifier,ACJSFunctionRef *cb) = inArguments;
+    
     if (!identifier) {
         UEXLogParameterError();
         return;
     }
     __kindof uexUploader *uploader = [self uploaderForIdentifier:identifier];
+    uploader.cb = cb;
     [uploader startUpload];
 }
-- (void)observeUploader:(NSMutableArray *)inArguments{
-    if([inArguments count] < 1){
-        UEXLogParameterError();
-        return;
-    }
-    NSString *identifier = UEX_STRING(inArguments[0]);
+- (NSNumber *)observeUploader:(NSMutableArray *)inArguments{
+    ACArgsUnpack(NSString *identifier) = inArguments;
     if (!identifier) {
         UEXLogParameterError();
-        return;
+        return UEX_FALSE;
     }
     __kindof uexUploader *uploader = [self uploaderForIdentifier:identifier];
-    [uploader setObserver:self.meBrwView];
+    [uploader setObserver:self.webViewEngine];
+    return  UEX_TRUE;
 }
-- (NSString *)getInfo:(NSMutableArray *)inArguments{
-    if([inArguments count] < 1){
-        UEXLogParameterError();
-        return nil;
-    }
-    NSString *identifier = UEX_STRING(inArguments[0]);
+- (NSDictionary *)getInfo:(NSMutableArray *)inArguments{
+    ACArgsUnpack(NSString *identifier) = inArguments;
     if (!identifier) {
         UEXLogParameterError();
         return nil;
@@ -282,7 +248,7 @@
     if (!info) {
         return nil;
     }
-    return [info infoDict].JSONFragment;
+    return [info infoDict];
 }
 
 - (void)setDebugMode:(NSMutableArray *)inArguments{
@@ -304,15 +270,7 @@
 }
 
 
-- (NSString *)getStringValue:(id)obj{
-    if ([obj isKindOfClass:[NSString class]]) {
-        return obj;
-    }
-    if ([obj isKindOfClass:[NSNumber class]]) {
-        return [obj stringValue];
-    }
-    return nil;
-}
+
 
 @end
 

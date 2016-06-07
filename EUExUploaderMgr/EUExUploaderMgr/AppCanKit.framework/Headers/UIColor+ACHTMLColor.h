@@ -1,10 +1,10 @@
 /**
  *
- *	@file   	: EUExUploaderMgr.h  in EUExUploaderMgr
+ *	@file   	: UIColor+ACHTMLColor.h  in AppCanKit
  *
  *	@author 	: CeriNo 
  * 
- *	@date   	: Created on 16/5/3.
+ *	@date   	: Created on 16/5/31.
  *
  *	@copyright 	: 2016 The AppCan Open Source Project.
  *
@@ -20,16 +20,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
-
+ 
 #import <Foundation/Foundation.h>
-
-#import "uexUploader.h"
-@class uexUploader;
-
-@interface EUExUploaderMgr : EUExBase<uexUploaderDelegate>
+#import <UIKit/UIKit.h>
 
 
 
+
+@interface UIColor (ACHTMLColor)
+
+/**
+ *  尝试解析一个HTMLColor字符串,得到UIColor
+ *
+ *  @param htmlColorStr <#htmlColorStr description#>
+ *
+ *  @return 解析得到的UIColor,解析失败时会返回nil
+ */
++ (nullable instancetype)ac_ColorWithHTMLColorString:(nonnull NSString *)htmlColorStr;
 
 @end

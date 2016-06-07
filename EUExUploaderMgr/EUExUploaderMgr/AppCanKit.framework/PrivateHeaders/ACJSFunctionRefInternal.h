@@ -1,10 +1,10 @@
 /**
  *
- *	@file   	: EUExUploaderMgr.h  in EUExUploaderMgr
+ *	@file   	: ACJSFunctionRefInternal.h  in AppCanKit
  *
- *	@author 	: CeriNo 
- * 
- *	@date   	: Created on 16/5/3.
+ *	@author 	: CeriNo
+ *
+ *	@date   	: Created on 16/5/30.
  *
  *	@copyright 	: 2016 The AppCan Open Source Project.
  *
@@ -22,14 +22,23 @@
  */
 
 
-#import <Foundation/Foundation.h>
+@class JSManagedValue;
+@class JSVirtualMachine;
 
-#import "uexUploader.h"
-@class uexUploader;
+NS_ASSUME_NONNULL_BEGIN
+@interface ACJSFunctionRef()
 
-@interface EUExUploaderMgr : EUExBase<uexUploaderDelegate>
-
-
-
+@property (nonatomic,strong)JSManagedValue *managedFunction;
+@property (nonatomic,strong)NSString *identifier;
+@property (nonatomic,weak)JSVirtualMachine *machine;
+/**
+ *  根据JSValue获得一个ACJSFunctionRef
+ *  @brief 在此对象被释放前,只要JS上下文没有被销毁,此对象会保证其对应的JS函数不被GC机制回收
+ *
+ *  @param value 必须是一个JS的function。不是function时此方法会返回nil
+ */
++ (nullable instancetype)functionRefFromJSValue:(JSValue *)value;
 
 @end
+
+NS_ASSUME_NONNULL_END

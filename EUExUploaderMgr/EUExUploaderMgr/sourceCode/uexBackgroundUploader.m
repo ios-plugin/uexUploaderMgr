@@ -24,7 +24,6 @@
 #import "uexBackgroundUploader.h"
 #import "uexUploadInfo.h"
 #import <AFNetworking/AFNetworking.h>
-#import "ACEUtils.h"
 #import "uexGlobalUploaderManager.h"
 #import "uexUploadFile.h"
 
@@ -206,7 +205,7 @@ static dispatch_queue_t _uexUploadMgrBackgroundOperationQueue;
 {
     _identifier = identifier;
     
-    NSURLSessionConfiguration *config = ACE_iOSVersion > 8.0 ? [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:[self sessionIdenfifier]]: [NSURLSessionConfiguration backgroundSessionConfiguration:[self sessionIdenfifier]];
+    NSURLSessionConfiguration *config = ACSystemVersion() > 8.0 ? [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:[self sessionIdenfifier]]: [NSURLSessionConfiguration backgroundSessionConfiguration:[self sessionIdenfifier]];
     self = [super initWithSessionConfiguration:config];
     if (self) {
         _responseData = [NSMutableData data];
