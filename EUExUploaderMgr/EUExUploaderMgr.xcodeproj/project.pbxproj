@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		03442C3718B2317900CEC18D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03442C3618B2317900CEC18D /* Foundation.framework */; };
 		4224236C1CEBFE3A009530DA /* AFNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 42C9A70F1CD879160013035B /* AFNetworking.framework */; };
-		424577F91D06738C00FC8A6F /* AppCanKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 424577F81D06738C00FC8A6F /* AppCanKit.framework */; };
+		42338CB81D4B39A90036F93E /* AppCanKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42338CB71D4B39A90036F93E /* AppCanKit.framework */; };
 		42C9A7101CD879160013035B /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9A70F1CD879160013035B /* AFNetworking.framework */; };
 		42C9A7151CD88D5D0013035B /* EUExUploaderMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C9A7141CD88D5D0013035B /* EUExUploaderMgr.m */; };
 		42C9A7181CD88D9A0013035B /* uexUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C9A7171CD88D9A0013035B /* uexUploader.m */; };
@@ -37,7 +37,7 @@
 		03442C3318B2317900CEC18D /* libuexUploaderMgr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuexUploaderMgr.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		03442C3618B2317900CEC18D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		03442C3A18B2317900CEC18D /* EUExUploaderMgr-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EUExUploaderMgr-Prefix.pch"; sourceTree = "<group>"; };
-		424577F81D06738C00FC8A6F /* AppCanKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCanKit.framework; sourceTree = "<group>"; };
+		42338CB71D4B39A90036F93E /* AppCanKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCanKit.framework; sourceTree = "<group>"; };
 		42C9A70F1CD879160013035B /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		42C9A7131CD88D5D0013035B /* EUExUploaderMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExUploaderMgr.h; sourceTree = "<group>"; };
 		42C9A7141CD88D5D0013035B /* EUExUploaderMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EUExUploaderMgr.m; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03442C3718B2317900CEC18D /* Foundation.framework in Frameworks */,
-				424577F91D06738C00FC8A6F /* AppCanKit.framework in Frameworks */,
+				42338CB81D4B39A90036F93E /* AppCanKit.framework in Frameworks */,
 				42C9A7101CD879160013035B /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,7 +104,7 @@
 		03442C3818B2317900CEC18D /* EUExUploaderMgr */ = {
 			isa = PBXGroup;
 			children = (
-				424577F81D06738C00FC8A6F /* AppCanKit.framework */,
+				42338CB71D4B39A90036F93E /* AppCanKit.framework */,
 				03442C6218B2326A00CEC18D /* sourceCode */,
 				03442C3918B2317900CEC18D /* Supporting Files */,
 				42C9A7131CD88D5D0013035B /* EUExUploaderMgr.h */,
@@ -182,7 +182,7 @@
 		03442C2B18B2317800CEC18D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = zhengcuan;
 			};
 			buildConfigurationList = 03442C2E18B2317800CEC18D /* Build configuration list for PBXProject "EUExUploaderMgr" */;

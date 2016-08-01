@@ -12,10 +12,6 @@
 		<data>
 		l8f80mb/+vmTkuu4935U08Q4z1w=
 		</data>
-		<key>Headers/ACEXTScope.h</key>
-		<data>
-		Rawjzf44QwF/5CSt9vC3QyFNGB8=
-		</data>
 		<key>Headers/ACJSFunctionRef.h</key>
 		<data>
 		lQhEA0m6IYX2RnTAiB+6Gv91vM8=
@@ -23,6 +19,10 @@
 		<key>Headers/ACJSON.h</key>
 		<data>
 		8y+pSLtMFUC3VAfawpFh3KckxjA=
+		</data>
+		<key>Headers/ACLog.h</key>
+		<data>
+		PG1t6tK4jE+gCU0jl23rXU+5MPI=
 		</data>
 		<key>Headers/ACMetamacros.h</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Headers/AppCanKit.h</key>
 		<data>
-		qk9ofD14aZNcKtgZs0+wRMMrdvU=
+		XRmA8hd96UH0qXXsr9A8dH88EKg=
 		</data>
 		<key>Headers/AppCanObjectProtocol.h</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		GMS9g31so4PLVPyvCaQY3GvOPWo=
+		cSJKid+JqrlspTDbnaal08klFdM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -64,13 +64,21 @@
 		<data>
 		0vZ/KuvG94cFL9baPOPqPNHb8JI=
 		</data>
+		<key>PrivateHeaders/ACEXTScope.h</key>
+		<data>
+		hjB8ShzT1Q5RIn+MR/kg4ioYKl8=
+		</data>
 		<key>PrivateHeaders/ACJSFunctionRefInternal.h</key>
 		<data>
-		Lu6eI1G6zX43PJDbgf7mFcS9c+Y=
+		KhoFtR8IPzyfovKQ1hEyp5yrvlQ=
 		</data>
 		<key>PrivateHeaders/ACJSValueSupport.h</key>
 		<data>
-		eHCeiaUy7jQ55mWOA6qHom2SiOs=
+		Y1BPC8Hf/dX3ckMBXNSb4cyW5iM=
+		</data>
+		<key>PrivateHeaders/ACLogger.h</key>
+		<data>
+		NeIpR/TMNhFn/F1vDCsQGc6BGVU=
 		</data>
 		<key>PrivateHeaders/AppCanGlobalObjectGetter.h</key>
 		<data>
@@ -101,17 +109,6 @@
 			SonGCey+uxcvSOqW6TrfTkGj2Z+kIFuILhaf+hO70kY=
 			</data>
 		</dict>
-		<key>Headers/ACEXTScope.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Rawjzf44QwF/5CSt9vC3QyFNGB8=
-			</data>
-			<key>hash2</key>
-			<data>
-			gqKVqJLTcC8ibW5AmNhAO2aUjyaoZoSbvUQ/IKvg7MM=
-			</data>
-		</dict>
 		<key>Headers/ACJSFunctionRef.h</key>
 		<dict>
 			<key>hash</key>
@@ -132,6 +129,17 @@
 			<key>hash2</key>
 			<data>
 			m/3V1Jp6kWKekDqBnWBbylpd0sbvuVRs33TWRDiqXc8=
+			</data>
+		</dict>
+		<key>Headers/ACLog.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			PG1t6tK4jE+gCU0jl23rXU+5MPI=
+			</data>
+			<key>hash2</key>
+			<data>
+			fYhtpBEn7/fPL3CskyfEu3ouNS6NMCPOB+vEbGDCDG0=
 			</data>
 		</dict>
 		<key>Headers/ACMetamacros.h</key>
@@ -171,11 +179,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qk9ofD14aZNcKtgZs0+wRMMrdvU=
+			XRmA8hd96UH0qXXsr9A8dH88EKg=
 			</data>
 			<key>hash2</key>
 			<data>
-			bSABo/XEpcBILAmULK4WGifpkXFxv5sdAcwjN0dfk/Q=
+			T5Yj7H3O4+OBGUXkcLtn8/CGJZXuMu+Mcj4EtOuXJ0Q=
 			</data>
 		</dict>
 		<key>Headers/AppCanObjectProtocol.h</key>
@@ -233,26 +241,48 @@
 			Mq1O4zFxRd5cS7BJu9W9UdwhFWinzFn3I0slHdVHo8w=
 			</data>
 		</dict>
+		<key>PrivateHeaders/ACEXTScope.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			hjB8ShzT1Q5RIn+MR/kg4ioYKl8=
+			</data>
+			<key>hash2</key>
+			<data>
+			865Bb3YFoF2L1JNcwNEvWBERURBLVkZXOnvh6noGu08=
+			</data>
+		</dict>
 		<key>PrivateHeaders/ACJSFunctionRefInternal.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Lu6eI1G6zX43PJDbgf7mFcS9c+Y=
+			KhoFtR8IPzyfovKQ1hEyp5yrvlQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			rbGxhNB6vuDgEePe461n04OjeQSMHVbCvypveKj8XIg=
+			Fj69kmKVJSpLqJtNt1G0MEnXQ3IHGiS5ttIOJLl4+6U=
 			</data>
 		</dict>
 		<key>PrivateHeaders/ACJSValueSupport.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			eHCeiaUy7jQ55mWOA6qHom2SiOs=
+			Y1BPC8Hf/dX3ckMBXNSb4cyW5iM=
 			</data>
 			<key>hash2</key>
 			<data>
-			Trq5RULGQ5c3fKW0GyDEpKPXfaDuBoKdNOeUyF1UA38=
+			V7KrGLD60bcVC//koMW/wPcQEhln7lL2jO+Ei1UG6ig=
+			</data>
+		</dict>
+		<key>PrivateHeaders/ACLogger.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			NeIpR/TMNhFn/F1vDCsQGc6BGVU=
+			</data>
+			<key>hash2</key>
+			<data>
+			vSJdYvmuNJ3cQWJdIpPy8GXDc82u6Dkq9pIT8HCZV3s=
 			</data>
 		</dict>
 		<key>PrivateHeaders/AppCanGlobalObjectGetter.h</key>

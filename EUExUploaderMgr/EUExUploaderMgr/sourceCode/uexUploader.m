@@ -92,7 +92,7 @@
 
 - (void)startUpload{
 
-    UEXLog(@"=> uexUploader '%@' start uploading!",self.identifier);
+    ACLogDebug(@"=> uexUploader '%@' start uploading!",self.identifier);
     AFHTTPRequestSerializer *reqSerializer = [AFHTTPRequestSerializer serializer];
     [self.headers enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [reqSerializer setValue:obj forHTTPHeaderField:key];
@@ -114,7 +114,7 @@
                                      self.status = uexUploaderStatusUploading;
                                      NSInteger percent = (NSInteger)(uploadProgress.fractionCompleted * 100);
                                      if (percent == 0 || percent == 100 || percent != self.percent) {
-                                         UEXLog(@"=> uexUploader '%@' uploading...%@%%",self.identifier,@(percent));
+                                         ACLogDebug(@"=> uexUploader '%@' uploading...%@%%",self.identifier,@(percent));
                                          self.percent = percent;
                                          [self onStatusCallback];
                                          if (self.type != uexUploaderTypeDefault) {
@@ -127,7 +127,7 @@
                                  }
                                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                       NSString *response = [responseObject isKindOfClass:[NSData class]] ? [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding] :[NSString stringWithFormat:@"%@",responseObject];
-                                      UEXLog(@"=> uexUploader '%@' SUCCESS! response:%@",self.identifier,response);
+                                      ACLogDebug(@"=> uexUploader '%@' SUCCESS! response:%@",self.identifier,response);
                                       self.responseString = response;
                                       self.percent = 100;
                                       self.status = uexUploaderStatusSuccess;
@@ -136,7 +136,7 @@
                                       
                                   }
                                   failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                      UEXLog(@"=> uexUploader '%@' FAIL! error:%@",self.identifier,error.localizedDescription);
+                                      ACLogDebug(@"=> uexUploader '%@' FAIL! error:%@",self.identifier,error.localizedDescription);
                                       self.status = uexUploaderStatusFailure;
                                       [self onStatusCallback];
                                       [self.sessionManager invalidateSessionCancelingTasks:YES];

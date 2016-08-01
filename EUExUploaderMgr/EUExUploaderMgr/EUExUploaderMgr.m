@@ -23,10 +23,11 @@
 
 #import "EUExUploaderMgr.h"
 #import <AFNetworking/AFNetworking.h>
+#import <AppCanKit/ACEXTScope.h>
 #import "uexGlobalUploaderManager.h"
 #import "uexBackgroundUploader.h"
 #import "uexGlobalUploaderManager.h"
-#import "JSON.h"
+
 
 #import "uexUploadInfo.h"
 
@@ -102,6 +103,40 @@
 
 #endif
 
+- (NSString *)create:(NSMutableArray *)inArguments{
+    ACArgsUnpack(NSDictionary *info) = inArguments;
+    NSString *identifier = stringArg(info[@"id"]) ?: [NSUUID UUID].UUIDString;
+    NSString *serverURL = stringArg(info[@"url"]);
+    NSNumber *typeNum = numberArg(info[@"type"]);
+    uexUploaderType type = typeNum ? typeNum.integerValue : uexUploaderTypeDefault;
+    if (!identifier
+        || ![uexGlobalUploaderMgr isIdentifierValid:identifier ]
+        || [self.uploaders.allKeys containsObject:identifier]
+        || !serverURL
+        || ![serverURL.lowercaseString containsString:@"http"]) {
+        UEXLogParameterError();
+        return nil;
+    }
+    switch (type) {
+        case uexUploaderTypeDefault: {
+            uexUploader *uploader = [[uexUploader alloc]initWithIdentifier:identifier serverURL:serverURL euexObj:self];
+            [self.uploaders setObject:uploader forKey:identifier];
+            break;
+        }
+        case uexUploaderTypeGlobal: {
+            uexUploader *uploader = [[uexUploader alloc]initWithIdentifier:identifier serverURL:serverURL euexObj:self];
+            uploader.type = uexUploaderTypeGlobal;
+            [uexGlobalUploaderMgr addGlobalUploader:uploader];
+            break;
+        }
+        case uexUploaderTypeBackground: {
+            uexBackgroundUploader *uploader = [[uexBackgroundUploader alloc]initWithIdentifier:identifier serverURL:serverURL euexObj:self];
+            [uexGlobalUploaderMgr addGlobalUploader:uploader];
+            break;
+        }
+    }
+    return identifier;
+}
 
 
 - (NSNumber *)createUploader:(NSMutableArray *)inArguments{
@@ -195,6 +230,7 @@
     NSInteger quality = [qualityNum integerValue];
     CGFloat maxWidth = [maxWidthNum floatValue];
     __kindof uexUploader *uploader = [self uploaderForIdentifier:identifier];
+    
     uploader.cb = cb;
     [uploader appendDataWithFilePath:filePath field:field editingImageWithScaledWidth:maxWidth compressLevel:quality];
     [uploader startUpload];
@@ -256,7 +292,11 @@
         UEXLogParameterError();
         return;
     }
-    [uexUploadHelper setDebugEnable:[inArguments[0] boolValue]];
+    if ([inArguments[0] boolValue]) {
+        ACLogSetGlobalLogMode(ACLogModeDebug);
+    }else{
+        ACLogSetGlobalLogMode(ACLogModeInfo);
+    }
 }
 
 

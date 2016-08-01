@@ -26,7 +26,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "uexGlobalUploaderManager.h"
 #import "uexUploadFile.h"
-
+#import <AppCanKit/ACEXTScope.h>
 static NSString * kUexBackgroundUploadSessionPrefix;
 static NSString * kUexBackgroundUploadTempFileFolderPath;
 
@@ -56,7 +56,7 @@ static NSString * kUexBackgroundUploadTempFileFolderPath;
             NSError *error = nil;
             [[NSFileManager defaultManager]createDirectoryAtPath:kUexBackgroundUploadTempFileFolderPath withIntermediateDirectories:YES attributes:nil error:&error];
             if (error) {
-                UEXLog(@"uexUploaderMgr create background temp file folder FAILED!error:%@",error.localizedDescription);
+                ACLogDebug(@"uexUploaderMgr create background temp file folder FAILED!error:%@",error.localizedDescription);
             }
         }
     });
@@ -116,7 +116,7 @@ static NSString * kUexBackgroundUploadTempFileFolderPath;
     } error:&error];
     
     if (error) {
-        UEXLog(@"=> uexBackgroundUploader '%@' form data FAILED!error:%@",self.identifier,error.localizedDescription);
+        ACLogDebug(@"=> uexBackgroundUploader '%@' form data FAILED!error:%@",self.identifier,error.localizedDescription);
     }
     
     NSURL *tmpURL = [NSURL fileURLWithPath:self.tempFilePath];
@@ -126,7 +126,7 @@ static NSString * kUexBackgroundUploadTempFileFolderPath;
     
     __block NSMutableURLRequest *req = [reqSerializer requestWithMultipartFormRequest:request writingStreamContentsToFile:tmpURL completionHandler:^(NSError * _Nullable error) {
         if (error) {
-            UEXLog(@"=> uexBackgroundUploader '%@' make temp file FAILED!error:%@",self.identifier,error.localizedDescription);
+            ACLogDebug(@"=> uexBackgroundUploader '%@' make temp file FAILED!error:%@",self.identifier,error.localizedDescription);
             self.status = uexUploaderStatusFailure;
             [self onStatusCallback];
             [[uexUploadInfo infoForUploader:self]save];
@@ -141,7 +141,7 @@ static NSString * kUexBackgroundUploadTempFileFolderPath;
                          self.status = uexUploaderStatusUploading;
                          NSInteger percent = (NSInteger)(uploadProgress.fractionCompleted * 100);
                          if (percent == 0 || percent == 100 || percent != self.percent) {
-                             UEXLog(@"=> uexBackgroundUploader '%@' uploading...%@%%",self.identifier,@(percent));
+                             ACLogDebug(@"=> uexBackgroundUploader '%@' uploading...%@%%",self.identifier,@(percent));
                              self.percent = percent;
                              [self onStatusCallback];
                              [uexGlobalUploaderMgr uexUploaderDidUploadData:self];
@@ -153,16 +153,16 @@ static NSString * kUexBackgroundUploadTempFileFolderPath;
                          }
                         if (error) {
                              self.status = uexUploaderStatusFailure;
-                             UEXLog(@"=> uexBackgroundUploader '%@' FAILED! error:%@",self.identifier,error.localizedDescription);
+                             ACLogDebug(@"=> uexBackgroundUploader '%@' FAILED! error:%@",self.identifier,error.localizedDescription);
                          }else{
                              self.percent = 100;
                              self.status = uexUploaderStatusSuccess;
-                             UEXLog(@"=> uexBackgroundUploader '%@' SUCCESS! response:%@",self.identifier,response);
+                             ACLogDebug(@"=> uexBackgroundUploader '%@' SUCCESS! response:%@",self.identifier,response);
                          }
                          [self onStatusCallback];
                          
                      }];
-        UEXLog(@"=> uexBackgroundUploader '%@' start uploading!",self.identifier);
+        ACLogDebug(@"=> uexBackgroundUploader '%@' start uploading!",self.identifier);
         [self.task resume];
     }];
     
@@ -244,10 +244,10 @@ static dispatch_queue_t _uexUploadMgrBackgroundOperationQueue;
     NSError *e = nil;
     [[NSFileManager defaultManager]removeItemAtPath:info.tempFilePath error:&e];
     if (e) {
-        UEXLog(@"=> uexBackgroundUploader '%@' delete temp file at path '%@' ERROR : %@",info.identifier,info.tempFilePath,e.localizedDescription);
+        ACLogDebug(@"=> uexBackgroundUploader '%@' delete temp file at path '%@' ERROR : %@",info.identifier,info.tempFilePath,e.localizedDescription);
     }
     [info saveInQueue:_uexUploadMgrBackgroundOperationQueue completion:^{
-        UEXLog(@" => uexBackgroundUploader '%@' save info complete.",info.identifier);
+        ACLogDebug(@" => uexBackgroundUploader '%@' save info complete.",info.identifier);
         [self invalidateSessionCancelingTasks:YES];
     }];
     
@@ -262,9 +262,9 @@ static dispatch_queue_t _uexUploadMgrBackgroundOperationQueue;
  */
 
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session{
-    UEXLog(@"=> waiting for saving info");
+    ACLogDebug(@"=> waiting for saving info");
     dispatch_barrier_async(_uexUploadMgrBackgroundOperationQueue, ^{
-        UEXLog(@"=> uexBackgroundUploader '%@' notify background event finish",self.identifier);
+        ACLogDebug(@"=> uexBackgroundUploader '%@' notify background event finish",self.identifier);
         dispatch_async(dispatch_get_main_queue(), ^{
             [uexGlobalUploaderMgr notifyBackgroundUploaderSessionFinishingEventsForBackgroundWithIdentifier:self.identifier];
         });
@@ -275,9 +275,9 @@ static dispatch_queue_t _uexUploadMgrBackgroundOperationQueue;
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error{
     [super URLSession:session didBecomeInvalidWithError:error];
     if (error) {
-        UEXLog(@"=> uexBackgroundUploader '%@' session invalidate ERROR: %@",self.identifier,error.localizedDescription);
+        ACLogDebug(@"=> uexBackgroundUploader '%@' session invalidate ERROR: %@",self.identifier,error.localizedDescription);
     }else{
-        UEXLog(@"=> uexBackgroundUploader '%@' session invalidate SUCCESS",self.identifier);
+        ACLogDebug(@"=> uexBackgroundUploader '%@' session invalidate SUCCESS",self.identifier);
     }
     [uexGlobalUploaderMgr notifyBackgroundUploaderSessionInvalidWithIdentifier:self.identifier];
 }

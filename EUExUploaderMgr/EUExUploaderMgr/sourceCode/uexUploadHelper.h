@@ -23,16 +23,14 @@
  
 #import <Foundation/Foundation.h>
 
-#define UEXLog(...) uexUploadLog(__VA_ARGS__);
-#define UEXLogParameterError() UEXLog(@"%s ERROR!Invalid parameter!",__func__)
+
+#define UEXLogParameterError() ACLogInfo(@"%s ERROR!Invalid parameter!",__func__)
 
 NS_ASSUME_NONNULL_BEGIN
 @class EUExBase;
 @interface uexUploadHelper : NSObject
 
-void uexUploadLog(NSString *format,...);
-+ (void)setDebugEnable:(BOOL)isEnabled;
-+ (BOOL)isDebug;
+
 + (NSString *)MIMETypeForPathExtension:(NSString *)ext;
 + (NSDictionary<NSString *,NSString *> *)AppCanHTTPHeadersWithEUExObj:(nullable __kindof EUExBase *)euexObj;
 

@@ -27,34 +27,7 @@
 
 
 
-
-#ifdef DEBUG
-#define XCODE_DEBUG_MODE 1
-#else
-#define XCODE_DEBUG_MODE 0
-#endif
-
-static BOOL debugEnabled = NO;
-
-
 @implementation uexUploadHelper
-
-
-+ (BOOL)isDebug{
-    return debugEnabled || XCODE_DEBUG_MODE;
-}
-void uexUploadLog(NSString *format,...){
-    va_list list;
-    va_start(list,format);
-    if (debugEnabled || XCODE_DEBUG_MODE ) {
-        NSLogv(format,list);
-    }
-    va_end(list);
-}
-
-+ (void)setDebugEnable:(BOOL)isEnabled{
-    debugEnabled = isEnabled;
-}
 
 
 

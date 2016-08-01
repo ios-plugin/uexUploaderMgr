@@ -126,7 +126,7 @@
             self.editedData = UIImageJPEGRepresentation(self.imageToEdit, 0.9);
             Unlock();
         } failureBlock:^(NSError *error) {
-            UEXLog(@"fetch asset image error:%@",error.localizedDescription);
+            ACLogDebug(@"fetch asset image error:%@",error.localizedDescription);
             Unlock();
         }];
     });

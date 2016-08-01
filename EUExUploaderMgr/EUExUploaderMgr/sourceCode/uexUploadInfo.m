@@ -169,7 +169,7 @@ static NSTimeInterval kMinimumSaveInteval = 5.0;
     NSError *error = nil;
     [[NSFileManager defaultManager]removeItemAtPath:[self savePathForIdentifier:identifier] error:&error];
     if (error) {
-        UEXLog(@"clear info %@ ERROR : %@",identifier,error.localizedDescription);
+        ACLogDebug(@"clear info %@ ERROR : %@",identifier,error.localizedDescription);
     }
     classUnlock();
 }
@@ -180,7 +180,7 @@ static NSTimeInterval kMinimumSaveInteval = 5.0;
     NSError *error = nil;
     [fm removeItemAtPath:_cacheFolderPath error:&error];
     if (error) {
-        UEXLog(@"clear ALL info ERROR : %@",error.localizedDescription);
+        ACLogDebug(@"clear ALL info ERROR : %@",error.localizedDescription);
     }
     [self createCacheFolder];
     classUnlock();
@@ -191,7 +191,7 @@ static NSTimeInterval kMinimumSaveInteval = 5.0;
         NSError *error = nil;
         [[NSFileManager defaultManager]createDirectoryAtPath:_cacheFolderPath withIntermediateDirectories:YES attributes:nil error:&error];
         if (error) {
-            UEXLog(@"uexUploaderMgr create info cache path ERROR : %@",error.localizedDescription);
+            ACLogDebug(@"uexUploaderMgr create info cache path ERROR : %@",error.localizedDescription);
         }
     }
 }

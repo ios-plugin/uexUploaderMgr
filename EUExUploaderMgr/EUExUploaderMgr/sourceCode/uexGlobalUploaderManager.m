@@ -60,7 +60,7 @@ static NSMutableArray *backgroundIdentifiers;
 
 - (void)resumeBackgroundUploaders{
     _globalUploaders = [NSMutableDictionary dictionary];
-    UEXLog(@"uexUploaderMgr updates background uploaders' status");
+    ACLogDebug(@"uexUploaderMgr updates background uploaders' status");
     for(NSString *identifier in backgroundIdentifiers){
         uexBackgroundUploader *uploader = [uexBackgroundUploader resumeWithInfo:[uexUploadInfo cachedInfoWithIdentifier:identifier]];
         if(uploader && uploader.status == uexUploaderStatusUploading){
@@ -84,7 +84,7 @@ static NSMutableArray *backgroundIdentifiers;
 
 - (void)addGlobalUploader:(uexUploader *)uploader{
     if (![self isIdentifierValid:uploader.identifier] || uploader.type == uexUploaderTypeDefault) {
-        UEXLog(@"=> uexUploader '%@' is NOT a global uploader!",uploader.identifier);
+        ACLogDebug(@"=> uexUploader '%@' is NOT a global uploader!",uploader.identifier);
         return;
     }
     [self.globalUploaders setValue:uploader forKey:uploader.identifier];
@@ -106,7 +106,7 @@ static NSMutableArray *backgroundIdentifiers;
     if (![identifier hasPrefix:[uexBackgroundUploader sessionPrefix]]) {
         return;
     }
-    UEXLog(@"uexUploaderMgr will handle background event");
+    ACLogDebug(@"uexUploaderMgr will handle background event");
     self.backgroundSessionCompletionHandler = completionHandler;
     self.backgroundSessionHandlerIdentifier = [identifier substringFromIndex:[uexBackgroundUploader sessionPrefix].length];
 }
