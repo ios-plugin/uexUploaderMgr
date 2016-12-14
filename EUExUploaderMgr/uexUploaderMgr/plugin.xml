@@ -7,8 +7,10 @@
         <method name="uploadFile"></method>
         <method name="appendFileData"></method>
         <method name="startUploader"></method>
-        <method name="getInfo" sync="true"></method>
+        <method name="getInfo"></method>
         <method name="observeUploader"></method>
         <method name="setDebugMode"></method>
+        <method name="create"></method>
     </plugin>
+    
 </uexplugins>

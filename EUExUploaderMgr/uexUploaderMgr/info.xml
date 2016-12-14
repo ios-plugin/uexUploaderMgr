@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <uexplugins>
-  <plugin uexName="uexUploaderMgr" version="3.0.18" build="18">
-    <info>18: IDE证书更新</info>
-    <build>17: 修复maxWidth参数异常的问题</build>
-    <build>16: 对于自签名的https服务器,不再校验域名</build>
-    <build>15: 用AFNetWorking重写;支持多文件上传;支持后台上传</build>
-    <build>14: 添加IDE支持</build>
-    <build>13: 修改了上传进度条达不到100%</build>
-    <build>12: 修改clean方法,setAppVerify新增加appId的信息</build>
-    <build>11: 验证的请求头的中的appid与key不匹配</build>
-    <build>10: 判断当前的验证的请求头的属于的应用</build>
-    <build>9: 当调用setHeader接口时，设置的请求头会为空</build>
-    <build>8: 修改验证appkey的方法</build>
-    <build>7: 修改请求的头的验证</build>
-    <build>6: 支持https</build>
-    <build>5: 统一uexUploaderMgr插件Android和iOS的请求超时时间</build>
-    <build>4: 修复uexUploaderMgr插件设置请求头不成功的问题</build>
-    <build>3: uexUploaderMgr插件新增setHeaders接口</build>
-    <build>2: 修复uexUploaderMgr.uploadFile接口不传"可选"参数会奔溃的bug</build>
-    <build>1: 修复上传过程中关闭window崩溃问题</build>
-    <build>0: 上传功能插件</build>
-  </plugin>
+    <plugin uexName="uexUploaderMgr" version="4.0.0" build="0">
+        <info>0: 上传功能插件</info>
+	</plugin>
 </uexplugins>
+

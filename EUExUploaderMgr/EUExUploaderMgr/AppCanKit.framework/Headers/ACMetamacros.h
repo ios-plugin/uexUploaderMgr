@@ -1,10 +1,10 @@
 /**
  *
- *	@file   	: ACEMetamacros.h  in AppCanEngine
+ *	@file   	: ACMetamacros.h  in AppCanKit
  *
  *	@author 	: CeriNo
  *
- *	@date   	: Created on 16/5/4.
+ *	@date   	: Created on 16/5/25.
  *
  *	@copyright 	: 2016 The AppCan Open Source Project.
  *
@@ -21,13 +21,28 @@
  *
  */
 
-#pragma mark - ACE EXTERN
 
-#ifdef __cplusplus
-#define ACE_EXTERN		extern "C" __attribute__((visibility ("default")))
+
+
+/**
+ *  @brief AppCanKit基础宏
+ */
+
+#pragma mark - EXPORT
+
+#define APPCAN_EXPORT FOUNDATION_EXPORT
+
+#ifdef APPCAN_DISABLE_SHORT_SYNTAX
+#define APPCAN_EXPORT_AS_SHORT(PROTO, ORIGINAL)
 #else
-#define ACE_EXTERN	        extern __attribute__((visibility ("default")))
+#define APPCAN_EXPORT_AS_SHORT(PROTO, ORIGINAL) FOUNDATION_STATIC_INLINE PROTO { return (ORIGINAL); }
 #endif
+
+#pragma mark - DEPRECATED
+
+#define APPCAN_LEGACY_PROPERTY DEPRECATED_MSG_ATTRIBUTE("该属性在4.0引擎中已废弃")
+#define APPCAN_LEGACY_METHOD DEPRECATED_MSG_ATTRIBUTE("该方法在4.0引擎中已废弃")
+
 
 
 #pragma mark - KEYWORDIFY
@@ -51,9 +66,9 @@
 // analysis, and to use @try/@catch otherwise to avoid insertion of unnecessary
 // autorelease pools.
 #if DEBUG
-#define ace_keywordify autoreleasepool {}
+#define ac_keywordify autoreleasepool {}
 #else
-#define ace_keywordify try {} @catch (...) {}
+#define ac_keywordify try {} @catch (...) {}
 #endif
 
 

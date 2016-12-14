@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03442C3718B2317900CEC18D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03442C3618B2317900CEC18D /* Foundation.framework */; };
 		4224236C1CEBFE3A009530DA /* AFNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 42C9A70F1CD879160013035B /* AFNetworking.framework */; };
+		42338CB81D4B39A90036F93E /* AppCanKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42338CB71D4B39A90036F93E /* AppCanKit.framework */; };
 		42C9A7101CD879160013035B /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9A70F1CD879160013035B /* AFNetworking.framework */; };
 		42C9A7151CD88D5D0013035B /* EUExUploaderMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C9A7141CD88D5D0013035B /* EUExUploaderMgr.m */; };
 		42C9A7181CD88D9A0013035B /* uexUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C9A7171CD88D9A0013035B /* uexUploader.m */; };
@@ -36,8 +37,7 @@
 		03442C3318B2317900CEC18D /* libuexUploaderMgr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuexUploaderMgr.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		03442C3618B2317900CEC18D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		03442C3A18B2317900CEC18D /* EUExUploaderMgr-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EUExUploaderMgr-Prefix.pch"; sourceTree = "<group>"; };
-		03442C5D18B2326A00CEC18D /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
-		03442C5E18B2326A00CEC18D /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
+		42338CB71D4B39A90036F93E /* AppCanKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCanKit.framework; sourceTree = "<group>"; };
 		42C9A70F1CD879160013035B /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		42C9A7131CD88D5D0013035B /* EUExUploaderMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExUploaderMgr.h; sourceTree = "<group>"; };
 		42C9A7141CD88D5D0013035B /* EUExUploaderMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EUExUploaderMgr.m; sourceTree = "<group>"; };
@@ -45,15 +45,8 @@
 		42C9A7171CD88D9A0013035B /* uexUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexUploader.m; sourceTree = "<group>"; };
 		42CAC7E01CE4578D009A4AB5 /* uexUploadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexUploadHelper.h; sourceTree = "<group>"; };
 		42CAC7E11CE4578D009A4AB5 /* uexUploadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexUploadHelper.m; sourceTree = "<group>"; };
-		42CAC7E31CE45AC8009A4AB5 /* WidgetOneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetOneDelegate.h; sourceTree = "<group>"; };
 		42CAC7E41CE463A7009A4AB5 /* uexUploadFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexUploadFile.h; sourceTree = "<group>"; };
 		42CAC7E51CE463A7009A4AB5 /* uexUploadFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexUploadFile.m; sourceTree = "<group>"; };
-		42CAC7EF1CE564BF009A4AB5 /* ACEArgsPacking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEArgsPacking.h; sourceTree = "<group>"; };
-		42CAC7F01CE564BF009A4AB5 /* ACEAvailable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEAvailable.h; sourceTree = "<group>"; };
-		42CAC7F11CE564BF009A4AB5 /* ACEEXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEEXTScope.h; sourceTree = "<group>"; };
-		42CAC7F21CE564BF009A4AB5 /* ACEMetamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEMetamacros.h; sourceTree = "<group>"; };
-		42CAC7F31CE564BF009A4AB5 /* ACEUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEUtils.h; sourceTree = "<group>"; };
-		42CAC7F41CE56615009A4AB5 /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 		42CAC7F51CE571BC009A4AB5 /* uexUploadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexUploadInfo.h; sourceTree = "<group>"; };
 		42CAC7F61CE571BC009A4AB5 /* uexUploadInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexUploadInfo.m; sourceTree = "<group>"; };
 		42CAC7FA1CE57EA8009A4AB5 /* uexBackgroundUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexBackgroundUploader.h; sourceTree = "<group>"; };
@@ -67,13 +60,6 @@
 		F7D298051A68F0FD004DF18C /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		F7D298061A68F0FD004DF18C /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		F7D298071A68F0FD004DF18C /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		F7EE01E61BA12CC600E3BA35 /* BUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUtility.h; sourceTree = "<group>"; };
-		F7EE01E71BA12CC600E3BA35 /* EBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBrowserView.h; sourceTree = "<group>"; };
-		F7EE01E81BA12CC600E3BA35 /* WWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWidget.h; sourceTree = "<group>"; };
-		F7EE01E91BA12CE700E3BA35 /* WWidgetMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWidgetMgr.h; sourceTree = "<group>"; };
-		F7EE01EA1BA12D0300E3BA35 /* ACEBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEBaseViewController.h; sourceTree = "<group>"; };
-		F7EE01EB1BA12D0300E3BA35 /* EBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBrowserController.h; sourceTree = "<group>"; };
-		F7EE01EC1BA12D0300E3BA35 /* EBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBrowserView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03442C3718B2317900CEC18D /* Foundation.framework in Frameworks */,
+				42338CB81D4B39A90036F93E /* AppCanKit.framework in Frameworks */,
 				42C9A7101CD879160013035B /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,8 +104,7 @@
 		03442C3818B2317900CEC18D /* EUExUploaderMgr */ = {
 			isa = PBXGroup;
 			children = (
-				42CAC7EE1CE564BF009A4AB5 /* ACEUtils */,
-				03442C5C18B2326A00CEC18D /* engineHeader */,
+				42338CB71D4B39A90036F93E /* AppCanKit.framework */,
 				03442C6218B2326A00CEC18D /* sourceCode */,
 				03442C3918B2317900CEC18D /* Supporting Files */,
 				42C9A7131CD88D5D0013035B /* EUExUploaderMgr.h */,
@@ -133,24 +119,6 @@
 				03442C3A18B2317900CEC18D /* EUExUploaderMgr-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		03442C5C18B2326A00CEC18D /* engineHeader */ = {
-			isa = PBXGroup;
-			children = (
-				42CAC7E31CE45AC8009A4AB5 /* WidgetOneDelegate.h */,
-				F7EE01EA1BA12D0300E3BA35 /* ACEBaseViewController.h */,
-				F7EE01EB1BA12D0300E3BA35 /* EBrowserController.h */,
-				F7EE01EC1BA12D0300E3BA35 /* EBrowserView.h */,
-				F7EE01E91BA12CE700E3BA35 /* WWidgetMgr.h */,
-				F7EE01E61BA12CC600E3BA35 /* BUtility.h */,
-				F7EE01E71BA12CC600E3BA35 /* EBrowserView.h */,
-				F7EE01E81BA12CC600E3BA35 /* WWidget.h */,
-				03442C5D18B2326A00CEC18D /* EUExBase.h */,
-				03442C5E18B2326A00CEC18D /* EUExBaseDefine.h */,
-				42CAC7F41CE56615009A4AB5 /* EUtility.h */,
-			);
-			path = engineHeader;
 			sourceTree = "<group>";
 		};
 		03442C6218B2326A00CEC18D /* sourceCode */ = {
@@ -172,18 +140,6 @@
 				42CAC7F61CE571BC009A4AB5 /* uexUploadInfo.m */,
 			);
 			path = sourceCode;
-			sourceTree = "<group>";
-		};
-		42CAC7EE1CE564BF009A4AB5 /* ACEUtils */ = {
-			isa = PBXGroup;
-			children = (
-				42CAC7EF1CE564BF009A4AB5 /* ACEArgsPacking.h */,
-				42CAC7F01CE564BF009A4AB5 /* ACEAvailable.h */,
-				42CAC7F11CE564BF009A4AB5 /* ACEEXTScope.h */,
-				42CAC7F21CE564BF009A4AB5 /* ACEMetamacros.h */,
-				42CAC7F31CE564BF009A4AB5 /* ACEUtils.h */,
-			);
-			path = ACEUtils;
 			sourceTree = "<group>";
 		};
 		F7D298001A68F0FD004DF18C /* JSON */ = {
@@ -226,7 +182,7 @@
 		03442C2B18B2317800CEC18D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = zhengcuan;
 			};
 			buildConfigurationList = 03442C2E18B2317800CEC18D /* Build configuration list for PBXProject "EUExUploaderMgr" */;
@@ -344,6 +300,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EUExUploaderMgr/sourceCode",
+					"$(PROJECT_DIR)/EUExUploaderMgr",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EUExUploaderMgr/EUExUploaderMgr-Prefix.pch";
@@ -366,6 +323,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EUExUploaderMgr/sourceCode",
+					"$(PROJECT_DIR)/EUExUploaderMgr",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EUExUploaderMgr/EUExUploaderMgr-Prefix.pch";

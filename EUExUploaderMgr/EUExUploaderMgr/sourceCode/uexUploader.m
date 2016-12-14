@@ -25,8 +25,8 @@
 #import "JSON.h"
 #import "EUExUploaderMgr.h"
 #import "uexUploadFile.h"
-#import "ACEUtils.h"
-#import "EUtility.h"
+
+
 #import "uexUploadInfo.h"
 #import "uexGlobalUploaderManager.h"
 
@@ -38,7 +38,7 @@
     if (self) {
         _identifier = identidier;
         _euexObj = euexObj;
-        _observer = euexObj.meBrwView;
+        _observer = euexObj.webViewEngine;
         _files = [NSMutableDictionary dictionary];
         _serverURL = serverURL;
         _type = uexUploaderTypeDefault;
@@ -92,7 +92,7 @@
 
 - (void)startUpload{
 
-    UEXLog(@"=> uexUploader '%@' start uploading!",self.identifier);
+    ACLogDebug(@"=> uexUploader '%@' start uploading!",self.identifier);
     AFHTTPRequestSerializer *reqSerializer = [AFHTTPRequestSerializer serializer];
     [self.headers enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [reqSerializer setValue:obj forHTTPHeaderField:key];
@@ -114,7 +114,7 @@
                                      self.status = uexUploaderStatusUploading;
                                      NSInteger percent = (NSInteger)(uploadProgress.fractionCompleted * 100);
                                      if (percent == 0 || percent == 100 || percent != self.percent) {
-                                         UEXLog(@"=> uexUploader '%@' uploading...%@%%",self.identifier,@(percent));
+                                         ACLogDebug(@"=> uexUploader '%@' uploading...%@%%",self.identifier,@(percent));
                                          self.percent = percent;
                                          [self onStatusCallback];
                                          if (self.type != uexUploaderTypeDefault) {
@@ -127,7 +127,7 @@
                                  }
                                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                       NSString *response = [responseObject isKindOfClass:[NSData class]] ? [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding] :[NSString stringWithFormat:@"%@",responseObject];
-                                      UEXLog(@"=> uexUploader '%@' SUCCESS! response:%@",self.identifier,response);
+                                      ACLogDebug(@"=> uexUploader '%@' SUCCESS! response:%@",self.identifier,response);
                                       self.responseString = response;
                                       self.percent = 100;
                                       self.status = uexUploaderStatusSuccess;
@@ -136,7 +136,7 @@
                                       
                                   }
                                   failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                      UEXLog(@"=> uexUploader '%@' FAIL! error:%@",self.identifier,error.localizedDescription);
+                                      ACLogDebug(@"=> uexUploader '%@' FAIL! error:%@",self.identifier,error.localizedDescription);
                                       self.status = uexUploaderStatusFailure;
                                       [self onStatusCallback];
                                       [self.sessionManager invalidateSessionCancelingTasks:YES];
@@ -151,15 +151,9 @@
     if (!self.observer) {
         return;
     }
-    if (ACE_Available()) {
-        [EUtility browserView:self.observer
-  callbackWithFunctionKeyPath:@"uexUploaderMgr.onStatus"
-                    arguments:ACE_ArgsPack(self.identifier,@(self.totalSize),@(self.percent),self.responseString,@(self.status))
-                   completion:nil];
-    }else{
-        NSString *jsStr = [NSString stringWithFormat:@"if(uexUploaderMgr.onStatus){uexUploaderMgr.onStatus('%@',%@,%@,%@,%@)}",self.identifier,@(self.totalSize),@(self.percent),[self.responseString JSONFragment],@(self.status)];
-        [EUtility brwView:self.observer evaluateScript:jsStr];
-    }
+    [self.observer callbackWithFunctionKeyPath:@"uexUploaderMgr.onStatus" arguments:ACArgsPack(self.identifier,@(self.totalSize),@(self.percent),self.responseString,@(self.status))];
+    [self.cb executeWithArguments:ACArgsPack(@(self.totalSize),@(self.percent),self.responseString,@(self.status))];
+    
 }
 
 - (void)cancelUpload{

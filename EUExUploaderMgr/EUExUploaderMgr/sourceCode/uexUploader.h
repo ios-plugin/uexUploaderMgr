@@ -51,7 +51,7 @@ typedef NS_ENUM(NSInteger,uexUploaderType){
 
 @interface uexUploader : NSObject
 @property (nonatomic,strong)NSString *identifier;
-@property (nonatomic,weak)EBrowserView *observer;
+@property (nonatomic,weak)id<AppCanWebViewEngineObject> observer;
 @property (nonatomic,assign)uexUploaderType type;
 
 @property (nonatomic,strong)NSDictionary *headers;
@@ -64,12 +64,13 @@ typedef NS_ENUM(NSInteger,uexUploaderType){
 @property (nonatomic,assign)uexUploaderStatus status;
 @property (nonatomic,strong)__kindof AFURLSessionManager *sessionManager;
 @property (nonatomic,strong)NSString *responseString;
+@property (nonatomic,strong)ACJSFunctionRef *cb;
 
 - (void)onStatusCallback;
 
 
 
-- (void)setHeaders:(NSDictionary *)headers;
+
 - (instancetype)initWithIdentifier:(NSString *)identidier serverURL:(NSString *)serverURL euexObj:(EUExUploaderMgr *)euexObj;
 
 

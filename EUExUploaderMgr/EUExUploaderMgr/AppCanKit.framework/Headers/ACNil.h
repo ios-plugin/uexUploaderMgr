@@ -1,10 +1,10 @@
 /**
  *
- *	@file   	: EUExUploaderMgr.h  in EUExUploaderMgr
+ *	@file   	: ACNil.h  in AppCanKit
  *
- *	@author 	: CeriNo 
- * 
- *	@date   	: Created on 16/5/3.
+ *	@author 	: CeriNo
+ *
+ *	@date   	: Created on 16/5/25.
  *
  *	@copyright 	: 2016 The AppCan Open Source Project.
  *
@@ -21,15 +21,15 @@
  *
  */
 
-
 #import <Foundation/Foundation.h>
 
-#import "uexUploader.h"
-@class uexUploader;
+/**
+ *  NSNull的替代品
+ *  不会导致unrecogized selector崩溃
+ */
+@interface ACNil : NSProxy
 
-@interface EUExUploaderMgr : EUExBase<uexUploaderDelegate>
 
-
-
++ (instancetype)null;
 
 @end

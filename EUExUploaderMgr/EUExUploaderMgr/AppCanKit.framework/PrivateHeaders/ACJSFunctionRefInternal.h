@@ -1,10 +1,10 @@
 /**
  *
- *	@file   	: uexUploadHelper.h  in EUExUploaderMgr
+ *	@file   	: ACJSFunctionRefInternal.h  in AppCanKit
  *
- *	@author 	: CeriNo 
- * 
- *	@date   	: Created on 16/5/12.
+ *	@author 	: CeriNo
+ *
+ *	@date   	: Created on 16/5/30.
  *
  *	@copyright 	: 2016 The AppCan Open Source Project.
  *
@@ -20,19 +20,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
- 
-#import <Foundation/Foundation.h>
 
 
-#define UEXLogParameterError() ACLogInfo(@"%s ERROR!Invalid parameter!",__func__)
+@class JSManagedValue;
+@class JSVirtualMachine;
 
 NS_ASSUME_NONNULL_BEGIN
-@class EUExBase;
-@interface uexUploadHelper : NSObject
+@interface ACJSFunctionRef()
 
+@property (nonatomic,strong)JSManagedValue *managedFunction;
+@property (nonatomic,strong)NSString *identifier;
+@property (nonatomic,weak)JSVirtualMachine *machine;
+@property (nonatomic,weak)JSContext *ctx;
 
-+ (NSString *)MIMETypeForPathExtension:(NSString *)ext;
-+ (NSDictionary<NSString *,NSString *> *)AppCanHTTPHeadersWithEUExObj:(nullable __kindof EUExBase *)euexObj;
+/**
+ *  根据JSValue获得一个ACJSFunctionRef
+ *  @brief 在此对象被释放前,只要JS上下文没有被销毁,此对象会保证其对应的JS函数不被GC机制回收
+ *
+ *  @param value 必须是一个JS的function。不是function时此方法会返回nil
+ */
++ (nullable instancetype)functionRefFromJSValue:(JSValue *)value;
 
 @end
 

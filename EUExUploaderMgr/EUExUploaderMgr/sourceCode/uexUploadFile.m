@@ -68,13 +68,19 @@
             Unlock();
             return;
         }
-        CGFloat targetWidth = scaledWidth >= self.imageToEdit.size.width ? self.imageToEdit.size.width : scaledWidth;
-        CGFloat targetHeight = targetWidth / self.imageToEdit.size.width * self.imageToEdit.size.height;
+
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight), NO, self.imageToEdit.scale);
-        [self.imageToEdit drawInRect:CGRectMake(0, 0, targetWidth, targetHeight)];
-        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        UIImage *image = self.imageToEdit;
+        if (scaledWidth < self.imageToEdit.size.width && scaledWidth > 0 ) {
+            CGFloat targetWidth = scaledWidth;
+            CGFloat targetHeight = targetWidth / self.imageToEdit.size.width * self.imageToEdit.size.height;
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight), NO, self.imageToEdit.scale);
+            [self.imageToEdit drawInRect:CGRectMake(0, 0, targetWidth, targetHeight)];
+            image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+        }
+        
+
         CGFloat quality = 1;
         if (compressLevel > 0) {
             switch (compressLevel) {
@@ -120,7 +126,7 @@
             self.editedData = UIImageJPEGRepresentation(self.imageToEdit, 0.9);
             Unlock();
         } failureBlock:^(NSError *error) {
-            UEXLog(@"fetch asset image error:%@",error.localizedDescription);
+            ACLogDebug(@"fetch asset image error:%@",error.localizedDescription);
             Unlock();
         }];
     });
