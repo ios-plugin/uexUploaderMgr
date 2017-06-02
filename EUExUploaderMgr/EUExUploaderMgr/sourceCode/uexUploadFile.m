@@ -59,54 +59,55 @@
 
 - (void)editImageWithScaledWidth:(CGFloat)scaledWidth compressLevel:(NSInteger)compressLevel{
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        Lock();
-        if (!self.imageToEdit) {
-            self.imageToEdit = [UIImage imageWithContentsOfFile:self.filePath];
-        }
-        if(!self.imageToEdit){
-            Unlock();
-            return;
-        }
-
-        
-        UIImage *image = self.imageToEdit;
-        if (scaledWidth < self.imageToEdit.size.width && scaledWidth > 0 ) {
-            CGFloat targetWidth = scaledWidth;
-            CGFloat targetHeight = targetWidth / self.imageToEdit.size.width * self.imageToEdit.size.height;
-            UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight), NO, self.imageToEdit.scale);
-            [self.imageToEdit drawInRect:CGRectMake(0, 0, targetWidth, targetHeight)];
-            image = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-        }
-        
-
-        CGFloat quality = 1;
-        if (compressLevel > 0) {
-            switch (compressLevel) {
-                case 1:{
-                    quality = 0.75;
-                    break;
-                }
-                case 2:{
-                    quality = 0.5;
-                    break;
-                }
-                case 3:{
-                    quality = 0.25;
-                    break;
-                }
-                default:{
-                    quality = 0.25;
-                    break;
-                }
+    if (!self.imageToEdit) {
+        self.imageToEdit = [UIImage imageWithContentsOfFile:self.filePath];
+    }
+    if(!self.imageToEdit){
+        return;
+    }
+    
+    
+    UIImage *image = self.imageToEdit;
+    if (scaledWidth < self.imageToEdit.size.width && scaledWidth > 0 ) {
+        CGFloat targetWidth = scaledWidth;
+        CGFloat targetHeight = targetWidth / self.imageToEdit.size.width * self.imageToEdit.size.height;
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(targetWidth, targetHeight), NO, self.imageToEdit.scale);
+        [self.imageToEdit drawInRect:CGRectMake(0, 0, targetWidth, targetHeight)];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    
+    
+    CGFloat quality = 1;
+    if (compressLevel > 0) {
+        switch (compressLevel) {
+            case 1:{
+                quality = 0.75;
+                break;
+            }
+            case 2:{
+                quality = 0.5;
+                break;
+            }
+            case 3:{
+                quality = 0.25;
+                break;
+            }
+            default:{
+                quality = 0.25;
+                break;
             }
         }
         
         self.editedData = UIImageJPEGRepresentation(image, quality);
-        self.MIMEType = [uexUploadHelper MIMETypeForPathExtension:@"jpg"];
-        Unlock();
-    });
+        
+    } else if (scaledWidth < self.imageToEdit.size.width && scaledWidth > 0) {
+        
+        self.editedData = UIImageJPEGRepresentation(image, 1.0);
+    }
+
+    
+    self.MIMEType = [uexUploadHelper MIMETypeForPathExtension:@"jpg"];
 }
 
 
