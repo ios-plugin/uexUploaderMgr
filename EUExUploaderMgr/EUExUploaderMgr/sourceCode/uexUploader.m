@@ -67,6 +67,15 @@
 - (void)setHeaders:(NSDictionary *)headers{
     __block NSMutableDictionary *mutableHeaders = [NSMutableDictionary dictionaryWithDictionary:[uexUploadHelper AppCanHTTPHeadersWithEUExObj:self.euexObj]];
     [headers enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        if (![obj isKindOfClass:NSString.class]) {
+            if ([obj isKindOfClass:NSNumber.class]) {
+                // 如果是数字类型，做保护，转为字符串。否则最后发请求的时候AFNetworking会出错。
+                obj = [(NSNumber *)obj stringValue];
+            }else{
+                NSLog(@"AppCan4.0===>uexUploaderMgr.setHeaders error===>header datatype not support: %@, key is %@", obj, key);
+                return;
+            }
+        }
         [mutableHeaders setValue:obj forKey:key];
     }];
     _headers = [mutableHeaders copy];
