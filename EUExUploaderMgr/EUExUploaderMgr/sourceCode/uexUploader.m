@@ -160,9 +160,10 @@
     if (!self.observer) {
         return;
     }
-    [self.observer callbackWithFunctionKeyPath:@"uexUploaderMgr.onStatus" arguments:ACArgsPack(self.identifier,@(self.totalSize),@(self.percent),self.responseString,@(self.status))];
-    [self.cb executeWithArguments:ACArgsPack(@(self.totalSize),@(self.percent),self.responseString,@(self.status))];
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.observer callbackWithFunctionKeyPath:@"uexUploaderMgr.onStatus" arguments:ACArgsPack(self.identifier,@(self.totalSize),@(self.percent),self.responseString,@(self.status))];
+        [self.cb executeWithArguments:ACArgsPack(@(self.totalSize),@(self.percent),self.responseString,@(self.status))];
+    });
 }
 
 - (void)cancelUpload{
