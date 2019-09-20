@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <uexplugins>
-    <plugin uexName="uexUploaderMgr" version="4.0.2.1" build="2019080701">
-    	<info>2: 修复文件上传时候setHeaders传入数字类型参数会崩溃的问题（修改为自动转为字符串）</info>
+    <plugin uexName="uexUploaderMgr" version="4.0.4" build="2019082102">
+        <info>回调方法调整，放入主线程处理</info>
+    	<build>2: 修复文件上传时候setHeaders传入数字类型参数会崩溃的问题（修改为自动转为字符串）</build>
     	<build>1: 修复上传原图图片变大问题</build>
         <build>0: 上传功能插件</build>
 	</plugin>

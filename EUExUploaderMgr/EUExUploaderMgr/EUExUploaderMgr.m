@@ -129,7 +129,9 @@
     __block NSNumber *result = @1;
     ACArgsUnpack(NSString *identifier,NSString *serverURL,NSDictionary *ext) = inArguments;
     @onExit{
-        [self.webViewEngine callbackWithFunctionKeyPath:@"uexUploaderMgr.cbCreateUploader" arguments:ACArgsPack(identifier,@2,result)];
+        dispatch_async(dispatch_get_main_queue(), ^{
+             [self.webViewEngine callbackWithFunctionKeyPath:@"uexUploaderMgr.cbCreateUploader" arguments:ACArgsPack(identifier,@2,result)];
+        });
     };
     UEX_PARAM_GUARD_NOT_NIL(identifier,UEX_FALSE);
     UEX_PARAM_GUARD_NOT_NIL(serverURL,UEX_FALSE);
