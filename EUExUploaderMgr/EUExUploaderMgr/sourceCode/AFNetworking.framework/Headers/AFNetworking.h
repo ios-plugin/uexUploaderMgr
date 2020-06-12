@@ -51,7 +51,6 @@
 #if TARGET_OS_IOS
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import <AFNetworking/UIRefreshControl+AFNetworking.h>
-#import <AFNetworking/UIWebView+AFNetworking.h>
 #endif
 
 
