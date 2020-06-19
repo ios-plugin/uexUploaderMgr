@@ -130,7 +130,7 @@ static NSString * kUexBackgroundUploadTempFileFolderPath;
             self.status = uexUploaderStatusFailure;
             [self onStatusCallback];
             [[uexUploadInfo infoForUploader:self]save];
-            [self.sessionManager invalidateSessionCancelingTasks:YES];
+            [self.sessionManager invalidateSessionCancelingTasks:YES resetSession:NO];
             return ;
         }
         self.task = [self.sessionManager
@@ -248,7 +248,7 @@ static dispatch_queue_t _uexUploadMgrBackgroundOperationQueue;
     }
     [info saveInQueue:_uexUploadMgrBackgroundOperationQueue completion:^{
         ACLogDebug(@" => uexBackgroundUploader '%@' save info complete.",info.identifier);
-        [self invalidateSessionCancelingTasks:YES];
+        [self invalidateSessionCancelingTasks:YES resetSession:NO];
     }];
     
 
