@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <uexplugins>
-    <plugin uexName="uexUploaderMgr" version="4.5.5" build="2020061201">
-        <info>5：(适配4.5引擎)移除AFNetworking.framework，依赖引擎公共的AF</info>
+    <plugin uexName="uexUploaderMgr" version="4.5.5.1" build="2020061901">
+        <info>5：适配4.5引擎中的4.0版AF，移除插件自带AFNetworking.framework</info>
         <build>回调方法调整，放入主线程处理</build>
     	<build>2: 修复文件上传时候setHeaders传入数字类型参数会崩溃的问题（修改为自动转为字符串）</build>
     	<build>1: 修复上传原图图片变大问题</build>
