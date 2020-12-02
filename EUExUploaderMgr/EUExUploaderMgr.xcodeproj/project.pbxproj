@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		03442C3718B2317900CEC18D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03442C3618B2317900CEC18D /* Foundation.framework */; };
-		4224236C1CEBFE3A009530DA /* AFNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 42C9A70F1CD879160013035B /* AFNetworking.framework */; };
 		42338CB81D4B39A90036F93E /* AppCanKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42338CB71D4B39A90036F93E /* AppCanKit.framework */; };
 		42C9A7101CD879160013035B /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9A70F1CD879160013035B /* AFNetworking.framework */; };
 		42C9A7151CD88D5D0013035B /* EUExUploaderMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C9A7141CD88D5D0013035B /* EUExUploaderMgr.m */; };
@@ -19,19 +18,6 @@
 		42CAC7FC1CE57EA8009A4AB5 /* uexBackgroundUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CAC7FB1CE57EA8009A4AB5 /* uexBackgroundUploader.m */; };
 		42CAC8051CE5DCCE009A4AB5 /* uexGlobalUploaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CAC8041CE5DCCE009A4AB5 /* uexGlobalUploaderManager.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		03442C3118B2317900CEC18D /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				4224236C1CEBFE3A009530DA /* AFNetworking.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		03442C3318B2317900CEC18D /* libuexUploaderMgr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuexUploaderMgr.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +151,6 @@
 			buildPhases = (
 				03442C2F18B2317900CEC18D /* Sources */,
 				03442C3018B2317900CEC18D /* Frameworks */,
-				03442C3118B2317900CEC18D /* CopyFiles */,
 			);
 			buildRules = (
 			);

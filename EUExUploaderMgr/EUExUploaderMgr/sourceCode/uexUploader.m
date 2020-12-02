@@ -107,50 +107,51 @@
         [reqSerializer setValue:obj forHTTPHeaderField:key];
     }];
     [self.sessionManager setRequestSerializer:reqSerializer];
-    self.task = [self.sessionManager POST:self.serverURL
-                               parameters:nil
-                constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-                                    [self.files enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, uexUploadFile * _Nonnull obj, BOOL * _Nonnull stop) {
-                                        NSData *data = obj.fileData;
-                                        if (data) {
-                                            [formData appendPartWithFileData:data  name:key fileName:obj.fileName mimeType:obj.MIMEType];
-                                        }
-                                    }];
-                                    [self.files removeAllObjects];
-                                }
-                                 progress:^(NSProgress * _Nonnull uploadProgress) {
-                                     self.totalSize = uploadProgress.totalUnitCount;
-                                     self.status = uexUploaderStatusUploading;
-                                     NSInteger percent = (NSInteger)(uploadProgress.fractionCompleted * 100);
-                                     if (percent == 0 || percent == 100 || percent != self.percent) {
-                                         ACLogDebug(@"=> uexUploader '%@' uploading...%@%%",self.identifier,@(percent));
-                                         self.percent = percent;
-                                         [self onStatusCallback];
-                                         if (self.type != uexUploaderTypeDefault) {
-                                             [uexGlobalUploaderMgr uexUploaderDidUploadData:self];
-                                         }else{
-                                             [self.euexObj uexUploaderDidUploadData:self];
-                                         }
-                                     }
-                                     
-                                 }
-                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                      NSString *response = [responseObject isKindOfClass:[NSData class]] ? [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding] :[NSString stringWithFormat:@"%@",responseObject];
-                                      ACLogDebug(@"=> uexUploader '%@' SUCCESS! response:%@",self.identifier,response);
-                                      self.responseString = response;
-                                      self.percent = 100;
-                                      self.status = uexUploaderStatusSuccess;
-                                      [self onStatusCallback];
-                                      [self.sessionManager invalidateSessionCancelingTasks:YES];
-                                      
-                                  }
-                                  failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                      ACLogDebug(@"=> uexUploader '%@' FAIL! error:%@",self.identifier,error.localizedDescription);
-                                      self.status = uexUploaderStatusFailure;
-                                      [self onStatusCallback];
-                                      [self.sessionManager invalidateSessionCancelingTasks:YES];
-                                  }];
-    
+    self.task = [((AFHTTPSessionManager *)self.sessionManager)
+                 POST:self.serverURL
+                 parameters:nil
+                 headers:nil
+                 constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                     [self.files enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, uexUploadFile * _Nonnull obj, BOOL * _Nonnull stop) {
+                         NSData *data = obj.fileData;
+                         if (data) {
+                             [formData appendPartWithFileData:data  name:key fileName:obj.fileName mimeType:obj.MIMEType];
+                         }
+                     }];
+                     [self.files removeAllObjects];
+                 }
+                 progress:^(NSProgress * _Nonnull uploadProgress) {
+                     self.totalSize = uploadProgress.totalUnitCount;
+                     self.status = uexUploaderStatusUploading;
+                     NSInteger percent = (NSInteger)(uploadProgress.fractionCompleted * 100);
+                     if (percent == 0 || percent == 100 || percent != self.percent) {
+                         ACLogDebug(@"=> uexUploader '%@' uploading...%@%%",self.identifier,@(percent));
+                         self.percent = percent;
+                         [self onStatusCallback];
+                         if (self.type != uexUploaderTypeDefault) {
+                             [uexGlobalUploaderMgr uexUploaderDidUploadData:self];
+                         }else{
+                             [self.euexObj uexUploaderDidUploadData:self];
+                         }
+                     }
+                     
+                 }
+                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                     NSString *response = [responseObject isKindOfClass:[NSData class]] ? [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding] :[NSString stringWithFormat:@"%@",responseObject];
+                     ACLogDebug(@"=> uexUploader '%@' SUCCESS! response:%@",self.identifier,response);
+                     self.responseString = response;
+                     self.percent = 100;
+                     self.status = uexUploaderStatusSuccess;
+                     [self onStatusCallback];
+                     [self.sessionManager invalidateSessionCancelingTasks:YES resetSession:NO];
+                     
+                 }
+                 failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                     ACLogDebug(@"=> uexUploader '%@' FAIL! error:%@",self.identifier,error.localizedDescription);
+                     self.status = uexUploaderStatusFailure;
+                     [self onStatusCallback];
+                     [self.sessionManager invalidateSessionCancelingTasks:YES resetSession:NO];
+                 }];
 }
 
 
@@ -167,7 +168,7 @@
 }
 
 - (void)cancelUpload{
-    [self.sessionManager invalidateSessionCancelingTasks:YES];
+    [self.sessionManager invalidateSessionCancelingTasks:YES resetSession:NO];
     
 }
 
